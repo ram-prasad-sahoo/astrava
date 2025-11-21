@@ -27,7 +27,7 @@
 - [Scan Modes](#-scan-modes)
 - [Troubleshooting](#-troubleshooting)
 - [Help & Support](#-help--support)
-- [Legal Notice](#-legal-notice)
+- [Legal Notice](#️-legal-notice)
 - [Author](#-author)
 
 ---
