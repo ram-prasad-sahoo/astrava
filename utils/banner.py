@@ -97,7 +97,7 @@ def display_banner():
     print(f"    Version: v1.0.0")
     print(f"    Author: RAM (Ram Prasad Sahoo)")
     print(f"    Email: ramprasadsahoo42@gmail.com")
-    print(f"    GitHub: https://github.com/astrava-security/astrava-scanner")
+    print(f"    GitHub: https://github.com/ram-prasad-sahoo/astrava")
     print()
     
     # Legal disclaimer

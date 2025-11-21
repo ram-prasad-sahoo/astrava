@@ -8,7 +8,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v1.0.0-orange.svg)](https://github.com/astrava-security/astrava-scanner)
+[![Version](https://img.shields.io/badge/version-v1.0.0-orange.svg)](https://github.com/ram-prasad-sahoo/astrava)
 
 **Enterprise-grade security scanner combining traditional penetration testing with AI analysis**
 
@@ -125,6 +125,14 @@ ASTRAVA has been tested and works perfectly on:
 ## 🚀 Installation
 
 ### Quick Install (Recommended)
+
+**Step 1: Clone the Repository**
+```bash
+git clone https://github.com/ram-prasad-sahoo/astrava.git
+cd astrava
+```
+
+**Step 2: Run the Installer**
 
 **Windows:**
 ```bash
@@ -644,8 +652,8 @@ python verify_installation.py
 ### Contact & Support
 
 - 📧 **Email**: ramprasadsahoo42@gmail.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/astrava-security/astrava-scanner/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/astrava-security/astrava-scanner/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/ram-prasad-sahoo/astrava/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/ram-prasad-sahoo/astrava/discussions)
 
 ### Frequently Asked Questions
 
@@ -677,11 +685,11 @@ A: Yes, but allocate at least 4GB RAM and 10GB storage for best performance.
 
 ## ⚖️ Legal Notice
 
-### ⚠️ IMPORTANT: Authorized Use Only
+**⚠️ IMPORTANT: Authorized Use Only**
 
-**ASTRAVA is designed for authorized security testing and educational purposes only.**
+ASTRAVA is designed for authorized security testing and educational purposes only.
 
-### Legal Requirements
+**Legal Requirements:**
 
 ✅ **DO:**
 - Only scan systems you own
@@ -697,14 +705,13 @@ A: Yes, but allocate at least 4GB RAM and 10GB storage for best performance.
 - Ignore terms of service
 - Exploit vulnerabilities beyond proof-of-concept
 
-### Disclaimer
-
+**Disclaimer:**
 - Users are responsible for complying with all applicable laws
 - Unauthorized access to computer systems is illegal
 - The developer assumes no liability for misuse
 - This tool is provided "as is" without warranty
 
-### Responsible Disclosure
+**Responsible Disclosure:**
 
 If you discover vulnerabilities:
 1. Do not exploit beyond proof-of-concept
@@ -716,25 +723,23 @@ If you discover vulnerabilities:
 
 ## 👨‍💻 Author
 
-<div align="center">
+**Made with ❤️ by RAM**
 
-### Made with ❤️ by RAM
-
-**Developer**: Ram Prasad Sahoo  
-**Email**: ramprasadsahoo42@gmail.com  
-**GitHub**: [@ramprasad-sahoo](https://github.com/ramprasad-sahoo)
+**Developer:** Ram Prasad Sahoo  
+**Email:** ramprasadsahoo42@gmail.com  
+**GitHub:** [@ram-prasad-sahoo](https://github.com/ram-prasad-sahoo)
 
 *Empowering security professionals with AI-driven vulnerability assessment*
 
 ---
 
-### License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-### Acknowledgments
+## 🙏 Acknowledgments
 
 - **Ollama Team** - For the amazing AI runtime
 - **Meta AI** - For LLaMA models
@@ -745,7 +750,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 © 2025 RAM (Ram Prasad Sahoo). All rights reserved.
 
-**Version**: v1.0.0  
-**Last Updated**: November 2025
-
-</div>
+**Version:** v1.0.0  
+**Last Updated:** November 2025

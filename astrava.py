@@ -189,7 +189,7 @@ SUPPORT & DOCUMENTATION:
   Documentation: README.md
   Installation:  docs/INSTALLATION_GUIDE.md
   Commands:      docs/CLI_COMMANDS.md
-  Issues:        https://github.com/astrava-security/astrava-scanner/issues
+  Issues:        https://github.com/ram-prasad-sahoo/astrava/issues
   Email:         ramprasadsahoo42@gmail.com
 
 ========================================================================

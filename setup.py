@@ -29,7 +29,7 @@ setup(
     description="Advanced AI-Powered Web Security Scanner with OWASP Top 10 Coverage",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Astrava-security/Astrava-scanner",
+    url="https://github.com/ram-prasad-sahoo/astrava",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -63,8 +63,8 @@ setup(
         "web-security", "ethical-hacking", "security-assessment", "llama", "ollama"
     ],
     project_urls={
-        "Bug Reports": "https://github.com/Astrava-security/Astrava-scanner/issues",
-        "Source": "https://github.com/Astrava-security/Astrava-scanner",
+        "Bug Reports": "https://github.com/ram-prasad-sahoo/astrava/issues",
+        "Source": "https://github.com/ram-prasad-sahoo/astrava",
         "Documentation": "https://Astrava-scanner.readthedocs.io/",
     },
 )

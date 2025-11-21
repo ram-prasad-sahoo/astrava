@@ -108,7 +108,7 @@ LEGAL NOTICE:
    - Unauthorized scanning may violate computer crime laws
    - Users are responsible for complying with all applicable laws
 
-For more information: https://github.com/astrava-security/astrava-scanner
+For more information: https://github.com/ram-prasad-sahoo/astrava
         """
     )
     
