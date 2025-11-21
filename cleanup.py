@@ -7,7 +7,7 @@ Removes temporary files, cache, and old reports
 import os
 import shutil
 from pathlib import Path
-import glob
+
 
 def cleanup_project():
     """Clean up temporary files and cache"""
