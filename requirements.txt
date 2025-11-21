@@ -1,0 +1,62 @@
+# ================================================================
+# ASTRAVA AI SECURITY SCANNER - Python Dependencies
+# ================================================================
+# 
+# Installation: pip install -r requirements.txt
+# Or run: install.bat (Windows) or install.sh (Linux/Mac)
+#
+# ================================================================
+
+# Core HTTP and Async Libraries
+aiohttp>=3.8.0              # Async HTTP client/server
+asyncio-throttle>=1.0.2     # Rate limiting for async operations
+requests>=2.31.0            # HTTP library for Python
+urllib3>=1.26.0             # HTTP client
+
+# DNS and Network Utilities
+dnspython>=2.4.0            # DNS toolkit
+python-nmap>=0.7.1          # Nmap port scanner wrapper
+
+# Data Processing and Parsing
+pathlib2>=2.3.7             # Object-oriented filesystem paths
+python-dateutil>=2.8.2      # Extensions to datetime module
+beautifulsoup4>=4.12.0      # HTML/XML parser
+lxml>=4.9.0                 # Fast XML/HTML parser (for BeautifulSoup)
+
+# GUI and Display (Required for astrava_gui.py)
+# tkinter is included with Python, no separate install needed
+
+# Enhanced Features (Optional but Recommended)
+colorlog>=6.7.0             # Colored console output
+Pillow>=10.0.0              # Image processing for reports
+jinja2>=3.1.0               # Advanced templating engine
+markdown>=3.5.0             # Markdown to HTML conversion
+
+# Development and Testing (Optional)
+# Uncomment if you want to contribute or test
+# pytest>=7.4.0
+# pytest-asyncio>=0.21.0
+# black>=23.0.0
+# flake8>=6.0.0
+
+# ================================================================
+# IMPORTANT: AI Engine Requirements
+# ================================================================
+# 
+# Ollama and LLaMA 3.2:3b must be installed separately:
+#
+# 1. Install Ollama:
+#    - Windows: Download from https://ollama.ai
+#    - Linux: curl -fsSL https://ollama.ai/install.sh | sh
+#    - macOS: brew install ollama
+#
+# 2. Download LLaMA model:
+#    ollama pull llama3.2:3b
+#
+# 3. Verify installation:
+#    ollama list
+#
+# The installation scripts (install.bat/install.sh) will handle
+# this automatically if you run them.
+#
+# ================================================================
