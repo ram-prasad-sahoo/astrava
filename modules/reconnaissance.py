@@ -1,5 +1,5 @@
 """
-Reconnaissance Module for Atlas AI Security Scanner
+Reconnaissance Module for Astrava AI Security Scanner
 Handles both passive and active reconnaissance
 """
 
