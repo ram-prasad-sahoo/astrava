@@ -1,5 +1,5 @@
 """
-Chain Attack Module for Atlas AI Security Scanner
+Chain Attack Module for Astrava AI Security Scanner
 Analyzes vulnerabilities to identify potential attack chains
 """
 
