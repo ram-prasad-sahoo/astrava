@@ -1,5 +1,5 @@
 """
-Scanning modules for Atlas AI Security Scanner
+Scanning modules for Astrava AI Security Scanner
 """
 
 from .reconnaissance import ReconnaissanceModule
