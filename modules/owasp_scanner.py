@@ -1,5 +1,5 @@
 """
-OWASP Top 10 Scanner Module for Atlas AI Security Scanner
+OWASP Top 10 Scanner Module for Astrava AI Security Scanner
 Comprehensive testing for all OWASP Top 10 2021 vulnerabilities
 """
 
