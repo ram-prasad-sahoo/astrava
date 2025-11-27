@@ -1,5 +1,5 @@
 """
-Advanced Web Crawler for Atlas AI Security Scanner
+Advanced Web Crawler for Astrava AI Security Scanner
 Discovers URLs, endpoints, parameters, and forms for comprehensive testing
 """
 
