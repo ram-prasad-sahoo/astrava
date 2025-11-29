@@ -1,24 +1,89 @@
-MIT License
+ASTRAVA AI SECURITY SCANNER - PROPRIETARY LICENSE
 
-Copyright (c) 2024 RAM (Ram Prasad Sahoo)
+Copyright (c) 2025 RAM (Ram Prasad Sahoo)
+All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+================================================================================
+TERMS AND CONDITIONS
+================================================================================
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. GRANT OF LICENSE
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+   Subject to the terms and conditions of this License, the copyright holder
+   (Ram Prasad Sahoo) grants you a limited, non-exclusive, non-transferable,
+   revocable license to:
+
+   ✓ USE the software for personal, educational, or commercial purposes
+   ✓ DOWNLOAD and install the software
+   ✓ RUN the software on systems you own or have permission to test
+   ✓ PROMOTE, share, and recommend the software to others
+   ✓ CREATE tutorials, reviews, and educational content about the software
+   ✓ SHARE the GitHub repository link with proper attribution
+
+2. RESTRICTIONS
+
+   You are NOT permitted to, without prior written permission from the 
+   copyright holder:
+
+   ✗ MODIFY, alter, or create derivative works of the software
+   ✗ COPY or redistribute the source code
+   ✗ SELL, rent, lease, or sublicense the software
+   ✗ CLAIM ownership or authorship of this software
+   ✗ REMOVE or alter any copyright notices, trademarks, or attributions
+   ✗ REVERSE engineer, decompile, or disassemble the software
+   ✗ USE the software's name, logo, or trademarks without permission
+
+3. ATTRIBUTION REQUIREMENT
+
+   You MUST give appropriate credit to the original author (Ram Prasad Sahoo)
+   in any use, publication, or reference to this software. Attribution must
+   include:
+   
+   - Author: RAM (Ram Prasad Sahoo)
+   - Project: ASTRAVA AI Security Scanner
+   - GitHub: https://github.com/ram-prasad-sahoo/astrava
+   - Email: ramprasadsahoo42@gmail.com
+
+4. MODIFICATION PERMISSION
+
+   If you wish to modify, fork, or create derivative works:
+   
+   - You MUST obtain written permission from Ram Prasad Sahoo
+   - Contact: ramprasadsahoo42@gmail.com
+   - Permission may be granted on a case-by-case basis
+   - Any approved modifications must retain original attribution
+
+5. PROMOTION AND SHARING
+
+   You are ENCOURAGED to:
+   
+   ✓ Promote and recommend this software to others
+   ✓ Share the GitHub repository link: https://github.com/ram-prasad-sahoo/astrava
+   ✓ Create tutorials, blog posts, videos, or reviews about the software
+   ✓ Mention the software in presentations, articles, or social media
+   ✓ Include the software in security tool lists or recommendations
+   
+   When promoting, you MUST:
+   - Provide proper attribution to Ram Prasad Sahoo
+   - Link to the official GitHub repository
+   - Not misrepresent yourself as the author or owner
+
+6. COMMERCIAL USE
+
+   - Personal and educational use is FREE
+   - Commercial use for security testing is ALLOWED
+   - Selling or reselling the software is PROHIBITED without permission
+   - Contact ramprasadsahoo42@gmail.com for commercial licensing inquiries
+
+7. NO WARRANTY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+   OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
 
 ---
 

@@ -7,7 +7,7 @@
 ### Professional AI-Powered Web Application Security Testing Platform
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-v1.0.0-orange.svg)](https://github.com/ram-prasad-sahoo/astrava)
 
 **Enterprise-grade security scanner combining traditional penetration testing with AI analysis**
@@ -31,6 +31,7 @@
 - [Author](#-author)
 - [License](#-license)
 - [Acknowledgments](#-acknowledgments)
+- [Share & Promote](#-share--promote)
 
 ---
 
@@ -737,7 +738,27 @@ If you discover vulnerabilities:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under a **Proprietary License** with the following terms:
+
+✅ **Allowed:**
+- Free to use for personal, educational, and commercial security testing
+- Download and run the software
+- Use on authorized systems
+- **Promote, share, and recommend the software**
+- **Create tutorials, reviews, and educational content**
+- **Share the GitHub repository link with attribution**
+
+❌ **Not Allowed Without Permission:**
+- Modify or create derivative works
+- Copy or redistribute the source code
+- Sell or sublicense the software
+- Claim ownership or remove attribution
+
+📧 **For Modifications or Commercial Licensing:** Contact ramprasadsahoo42@gmail.com
+
+🌟 **Help Us Grow:** We encourage you to share and promote ASTRAVA! Create tutorials, write reviews, or recommend it to others in the security community.
+
+See the [LICENSE](LICENSE) file for complete terms and conditions.
 
 ---
 
@@ -750,7 +771,41 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-© 2025 RAM (Ram Prasad Sahoo). All rights reserved.
+## 🌟 Share & Promote
+
+**Love ASTRAVA? Help us grow!**
+
+We encourage you to share and promote ASTRAVA with the security community:
+
+✅ **Star the Repository** - Show your support on GitHub  
+✅ **Share on Social Media** - Twitter, LinkedIn, Reddit, Discord  
+✅ **Write Reviews** - Blog posts, Medium articles, YouTube videos  
+✅ **Create Tutorials** - Help others learn to use ASTRAVA  
+✅ **Recommend to Friends** - Share with fellow security professionals  
+✅ **Include in Tool Lists** - Add to your favorite security tools collection  
+
+**When sharing, please:**
+- Give credit to Ram Prasad Sahoo
+- Link to: https://github.com/ram-prasad-sahoo/astrava
+- Use hashtags: #ASTRAVA #SecurityScanner #AISecurityTesting #OWASP
+
+**Share Links:**
+- 🐦 Twitter: "Check out ASTRAVA - AI-Powered Security Scanner! 🔐 https://github.com/ram-prasad-sahoo/astrava"
+- 💼 LinkedIn: "Discovered an amazing AI-powered security scanner for OWASP Top 10 testing"
+- 🎥 YouTube: Create installation guides, tutorials, or demo videos
+- 📝 Blog: Write about your experience using ASTRAVA
+
+Your support helps make security testing accessible to everyone! 🚀
+
+---
+
+---
+
+**© 2025 RAM (Ram Prasad Sahoo). All Rights Reserved.**
+
+This software is proprietary and protected by copyright law. Unauthorized copying, modification, distribution, or use of this software without explicit written permission from the copyright holder is strictly prohibited and may result in legal action.
 
 **Version:** v1.0.0  
 **Last Updated:** November 2025
+
+For licensing inquiries: ramprasadsahoo42@gmail.com
