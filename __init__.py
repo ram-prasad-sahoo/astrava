@@ -10,15 +10,15 @@ License: MIT
 __version__ = "1.0.0"
 __author__ = "RAM (Ram Prasad Sahoo)"
 __email__ = "ramprasadsahoo42@gmail.com"
-__license__ = "MIT"
+__license__ = "Proprietary"
 __description__ = "Advanced AI-Powered Web Security Scanner with OWASP Top 10 Coverage"
 
-from .core.scanner_engine import AtlasAIScanner
+from .core.scanner_engine import AstravaAIScanner
 from .core.config import Config
 from .core.ai_engine import AIEngine
 
 __all__ = [
-    "AtlasAIScanner",
+    "AstravaAIScanner",
     "Config", 
     "AIEngine",
     "__version__",
