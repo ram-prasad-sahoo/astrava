@@ -16,7 +16,7 @@ from urllib.parse import urlparse, urljoin
 import logging
 from datetime import datetime
 
-from core.config import Config, COMMON_PORTS, COMMON_DIRECTORIES
+from core.config import Config, COMMON_PORTS, COMMON_DIRECTORIES, RECON_CONFIG
 
 class ReconnaissanceModule:
     """Comprehensive reconnaissance module"""
@@ -70,7 +70,7 @@ class ReconnaissanceModule:
             recon_data['search_engines'] = search_results
             
             # Wayback machine (optional, can be slow)
-            if self.config.get('passive', {}).get('wayback_machine', True):
+            if RECON_CONFIG.get('passive', {}).get('wayback_machine', True):
                 wayback_urls = await self.wayback_machine_recon()
                 recon_data['wayback_machine'] = wayback_urls
             else:
