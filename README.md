@@ -141,7 +141,76 @@ python astrava.py --help
 
 ---
 
-## 📋 Requirements
+## 💻 System Requirements
+
+### Minimum Requirements
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🖥️ **Hardware**
+- **CPU**: Dual-core processor (2 GHz+)
+- **RAM**: 4 GB minimum
+  - 2 GB for Astrava
+  - 2 GB for AI models (if using Ollama)
+- **Storage**: 5 GB free space
+  - 500 MB for Astrava
+  - 2-4 GB for AI models
+- **Network**: Internet connection required
+
+</td>
+<td width="50%">
+
+#### 💿 **Software**
+- **OS**: Windows 10+, Linux, macOS 10.15+
+- **Python**: 3.8 or higher
+- **Browser**: Modern browser (Chrome, Firefox, Edge)
+- **Ollama**: Optional (for AI features)
+- **Git**: For installation from source
+
+</td>
+</tr>
+</table>
+
+### Recommended Requirements
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🚀 **For Best Performance**
+- **CPU**: Quad-core processor (3 GHz+)
+- **RAM**: 8 GB or more
+- **Storage**: 10 GB free space
+- **Network**: Broadband connection
+
+</td>
+<td width="50%">
+
+#### 🤖 **For AI Features**
+- **RAM**: 
+  - 2 GB: llama3.2:1b (lightweight)
+  - 4 GB: llama3.2:3b (balanced)
+  - 8 GB: mistral:7b (powerful)
+- **Ollama**: Latest version
+- **GPU**: Optional (speeds up AI)
+
+</td>
+</tr>
+</table>
+
+### Supported Platforms
+
+| Platform | Versions | Status | Notes |
+|:--------:|:---------|:------:|:------|
+| 🪟 **Windows** | 10, 11, Server 2019+ | ✅ Fully Supported | Use install.bat |
+| 🐧 **Linux** | Ubuntu 20.04+, Debian 10+, Fedora 35+, Arch, Kali | ✅ Fully Supported | Use install.sh |
+| 🍎 **macOS** | 10.15+ (Catalina and later) | ✅ Fully Supported | Intel & Apple Silicon |
+
+---
+
+## 📋 Software Requirements
 
 | Component | Version | Required | Notes |
 |-----------|---------|----------|-------|
