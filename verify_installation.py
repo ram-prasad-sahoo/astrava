@@ -117,8 +117,8 @@ def check_ollama_service():
             return True  # Not critical
     except Exception:
         print("    ⚠️  Ollama service not running (optional)")
-        print("       You can use cloud AI providers instead")
-        print("       Or start Ollama with: ollama serve")
+        print("       Start Ollama with: ollama serve")
+        print("       Or install from: https://ollama.com/")
         return True  # Not critical
 
 def check_ai_config():
