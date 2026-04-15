@@ -45,19 +45,9 @@ def main():
         print(" Professional Color-coded Output")
         print()
         
-        try:
-            from Astrava_advanced_gui import AstravaAdvancedGUI
-            import tkinter as tk
-            
-            root = tk.Tk()
-            app = AstravaAdvancedGUI(root)
-            root.mainloop()
-            
-        except ImportError as e:
-            print(f"[ERROR] Error: {e}")
-            print(" Please install dependencies: pip install -r requirements.txt")
-            return 1
-        except Exception as e:
+        print(" No arguments provided. Use --help for usage information.")
+        print(" For GUI interface, use: python web_gui.py")
+        return 1
             print(f"[ERROR] Unexpected error: {e}")
             return 1
     

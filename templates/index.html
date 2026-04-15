@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astrava AI Security Scanner</title>
+  <meta name="description" content="Advanced AI-Powered Web Security Assessment Platform — OWASP Top 10 2021 Scanner" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css?v=4" />
+</head>
+<body>
+  <!-- ── Header ──────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="/static/logo.png" alt="Astrava Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg class="logo-fallback" style="display:none;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,2 38,12 38,28 20,38 2,28 2,12" fill="none" stroke="url(#hexGrad)" stroke-width="2"/>
+            <polygon points="20,8 32,15 32,25 20,32 8,25 8,15" fill="url(#hexGrad)" opacity="0.15"/>
+            <path d="M14 15 L20 12 L26 15 L26 22 L20 26 L14 22Z" fill="url(#hexGrad)" opacity="0.5"/>
+            <circle cx="20" cy="19" r="3" fill="#00d4ff"/>
+            <defs>
+              <linearGradient id="hexGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#00d4ff"/>
+                <stop offset="100%" stop-color="#ff6633"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">ASTRAVA</h1>
+          <span class="brand-sub">AI Security Scanner</span>
+        </div>
+      </div>
+      <div class="header-center">
+        <span class="badge badge-version">v1.0</span>
+        <span class="badge badge-owasp">OWASP Top 10 2021</span>
+      </div>
+      <div class="header-right">
+        <div class="ai-status" id="aiStatus">
+          <span class="status-dot" id="aiStatusDot"></span>
+          <span id="aiStatusText">Checking AI...</span>
+        </div>
+        <div class="clock" id="clock">--:--:--</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Layout ─────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- ── Config Panel ───────────────── -->
+    <section class="config-panel glass-card">
+      <div class="config-grid">
+
+        <!-- Target URL -->
+        <div class="config-block target-block">
+          <label class="field-label">Target URL</label>
+          <div class="url-row">
+            <div class="input-wrap">
+              <span class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <input type="url" id="targetUrl" class="url-input" placeholder="https://target.example.com" autocomplete="off" spellcheck="false" />
+            </div>
+          </div>
+          <div class="examples-row">
+            <span class="examples-label">Quick fill:</span>
+            <button class="example-btn" onclick="fillUrl('http://testphp.vulnweb.com/')">Vulnerable PHP</button>
+            <button class="example-btn" onclick="fillUrl('http://demo.testfire.net/')">Banking Demo</button>
+            <button class="example-btn" onclick="fillUrl('https://httpbin.org/')">HTTP Testing</button>
+          </div>
+        </div>
+
+        <!-- Attack Mode -->
+        <div class="config-block mode-block">
+          <label class="field-label">Attack Mode</label>
+          <div class="mode-group">
+            <label class="mode-card mode-basic" id="modeCardBasic">
+              <input type="radio" name="mode" value="basic" id="modeBasic" checked onchange="onModeChange()" />
+              <div class="mode-icon">⚡</div>
+              <div class="mode-info">
+                <span class="mode-name">Basic Scan</span>
+                <span class="mode-desc">Fast, lightweight detection</span>
+              </div>
+              <div class="mode-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </label>
+            <label class="mode-card mode-medium" id="modeCardMedium">
+              <input type="radio" name="mode" value="medium" id="modeMedium" onchange="onModeChange()" />
+              <div class="mode-icon">🔍</div>
+              <div class="mode-info">
+                <span class="mode-name">Medium Scan</span>
+                <span class="mode-desc">OWASP Top 10 + AI analysis</span>
+              </div>
+              <div class="mode-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </label>
+            <label class="mode-card mode-aggressive" id="modeCardAggressive">
+              <input type="radio" name="mode" value="aggressive" id="modeAggressive" onchange="onModeChange()" />
+              <div class="mode-icon">🔥</div>
+              <div class="mode-info">
+                <span class="mode-name">Aggressive Scan</span>
+                <span class="mode-desc">Full OWASP + Chain Attacks</span>
+              </div>
+              <div class="mode-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Advanced Options -->
+        <div class="config-block options-block">
+          <label class="field-label">Advanced Options</label>
+          <div class="options-grid">
+            <label class="toggle-label" id="toggleOwasp">
+              <input type="checkbox" id="optOwasp" />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              <span class="toggle-text">OWASP Top 10</span>
+            </label>
+            <label class="toggle-label" id="toggleChain">
+              <input type="checkbox" id="optChain" />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              <span class="toggle-text">Chain Attacks</span>
+            </label>
+            <label class="toggle-label">
+              <input type="checkbox" id="optPassive" />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              <span class="toggle-text">Passive Only</span>
+            </label>
+            <label class="toggle-label">
+              <input type="checkbox" id="optVerbose" checked />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              <span class="toggle-text">Verbose Output</span>
+            </label>
+
+            <div class="field-row payloads-row">
+              <label class="mini-label" for="customPayloads">Custom Payloads</label>
+              <div class="file-input-wrap">
+                <input type="text" id="customPayloads" class="mini-input" placeholder="path/to/payloads.txt" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Control Bar ─────────────── -->
+      <div class="control-bar">
+        <div class="control-buttons">
+          <button class="btn btn-start" id="btnStart" onclick="startScan()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            START SECURITY SCAN
+          </button>
+          <button class="btn btn-stop" id="btnStop" onclick="stopScan()" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+            STOP SCAN
+          </button>
+          <button class="btn btn-clear" id="btnClear" onclick="clearResults()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+            CLEAR
+          </button>
+          <button class="btn btn-report" id="btnReport" onclick="openReport()" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            OPEN REPORT
+          </button>
+          <button class="btn btn-refresh" id="btnRefresh" onclick="refreshCounts()" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            REFRESH
+          </button>
+        </div>
+
+        <!-- Progress bar with percentage -->
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+          <div class="progress-text" id="progressText">0%</div>
+        </div>
+
+        <!-- Status bar -->
+        <div class="status-bar" id="statusBar">
+          <span class="status-dot status-ready"></span>
+          <span id="statusText">Ready to scan</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI Model Settings ───────────────────────────────────────── -->
+    <section class="ai-settings-panel glass-card" id="aiSettingsPanel">
+      <div class="ai-settings-header">
+        <h3 class="ai-settings-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          AI Model Settings
+        </h3>
+        <div class="active-model-display" id="activeModelDisplay">
+          <span class="active-label">Active:</span>
+          <span class="active-model" id="activeModelText">Loading...</span>
+        </div>
+      </div>
+
+      <div class="ai-settings-content">
+        <!-- Local Models (Ollama) Section -->
+        <div class="ai-section">
+          <div class="ai-section-header">
+            <h4 class="ai-section-title">Local Models (Ollama)</h4>
+            <button class="btn-refresh-models" id="btnRefreshModels" onclick="refreshAIModels()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"/>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+              </svg>
+              Refresh Models
+            </button>
+          </div>
+          <div class="ollama-models-list" id="ollamaModelsList">
+            <div class="loading-placeholder">Loading Ollama models...</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="ai-settings-actions">
+        <button class="btn btn-save-config" id="btnSaveAIConfig" onclick="saveAIConfiguration()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          Save Configuration
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Stats Banner ────────────────────────────────────────────── -->
+    <section class="stats-banner glass-card">
+      <div class="stat-item" id="statTotal">
+        <div class="stat-number" id="cntTotal">0</div>
+        <div class="stat-label">DETECTED</div>
+        <div class="stat-bar" style="background: #8888aa"></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" id="statCritical">
+        <div class="stat-number critical" id="cntCritical">0</div>
+        <div class="stat-label critical-lbl">CRITICAL</div>
+        <div class="stat-bar critical-bar"></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" id="statHigh">
+        <div class="stat-number high" id="cntHigh">0</div>
+        <div class="stat-label high-lbl">HIGH</div>
+        <div class="stat-bar high-bar"></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" id="statMedium">
+        <div class="stat-number medium" id="cntMedium">0</div>
+        <div class="stat-label medium-lbl">MEDIUM</div>
+        <div class="stat-bar medium-bar"></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" id="statLow">
+        <div class="stat-number low" id="cntLow">0</div>
+        <div class="stat-label low-lbl">LOW</div>
+        <div class="stat-bar low-bar"></div>
+      </div>
+    </section>
+
+    <!-- ── Results Tabs ────────────────────────────────────────────── -->
+    <section class="results-section glass-card">
+      <div class="tabs-header">
+        <button class="tab-btn active" id="tab-console" onclick="switchTab('console')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          Live Console
+          <span class="tab-badge" id="consoleBadge">0</span>
+        </button>
+        <button class="tab-btn" id="tab-vulns" onclick="switchTab('vulns')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Vulnerabilities
+          <span class="tab-badge vulns-badge" id="vulnsBadge">0</span>
+        </button>
+        <button class="tab-btn" id="tab-summary" onclick="switchTab('summary')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Detailed Summary
+        </button>
+        <button class="tab-btn" id="tab-ai" onclick="switchTab('ai')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          AI Analysis
+        </button>
+        <div class="tabs-spacer"></div>
+        <div class="scan-timer" id="scanTimer" style="display:none">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="timerText">00:00</span>
+        </div>
+      </div>
+
+      <!-- Console Tab -->
+      <div class="tab-panel active" id="panel-console">
+        <div class="console-toolbar">
+          <button class="console-btn" onclick="scrollConsoleBottom()">⬇ Bottom</button>
+          <button class="console-btn" onclick="scrollConsoleTop()">⬆ Top</button>
+          <label class="toggle-label small">
+            <input type="checkbox" id="autoScroll" checked />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-text">Auto-scroll</span>
+          </label>
+        </div>
+        <div class="console-output" id="consoleOutput"></div>
+      </div>
+
+      <!-- Vulns Tab -->
+      <div class="tab-panel" id="panel-vulns">
+        <div class="vuln-toolbar">
+          <input type="text" class="search-input" id="vulnSearch" placeholder="🔍  Filter vulnerabilities..." oninput="filterVulns()" />
+          <select class="mini-select" id="vulnSeverityFilter" onchange="filterVulns()">
+            <option value="">All Severities</option>
+            <option value="Critical">Critical</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <button class="console-btn" onclick="exportCsv()">⬇ CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table class="vuln-table" id="vulnTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th onclick="sortTable(1)">Vulnerability Type ↕</th>
+                <th onclick="sortTable(2)">Severity ↕</th>
+                <th>Target URL</th>
+                <th>Parameter</th>
+                <th>Evidence</th>
+              </tr>
+            </thead>
+            <tbody id="vulnTableBody">
+              <tr class="empty-row"><td colspan="6">No vulnerabilities detected yet. Start a scan to populate this table.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Summary Tab -->
+      <div class="tab-panel" id="panel-summary">
+        <div class="text-panel" id="summaryPanel">
+          <div class="placeholder-msg">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <p>Scan summary will appear here after a scan completes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Analysis Tab -->
+      <div class="tab-panel" id="panel-ai">
+        <div class="text-panel" id="aiPanel">
+          <div class="placeholder-msg">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <p>AI analysis and recommendations will appear here after a scan completes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Legal Footer ──────────────────────────────────────────────── -->
+  <footer class="footer">
+    <span>⚠ For authorized security testing only — Unauthorized scanning may violate laws</span>
+    <span class="footer-sep">|</span>
+    <a href="https://github.com/ram-prasad-sahoo/astrava" target="_blank">GitHub</a>
+  </footer>
+
+  <!-- ── Modal ─────────────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Confirm</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-clear" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-start" id="modalConfirm">Continue</button>
+    </div>
+  </div>
+
+  <!-- Socket.IO + App JS -->
+  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+  <script src="/static/app.js?v=4"></script>
+</body>
+</html>

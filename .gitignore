@@ -19,12 +19,14 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual Environment
 venv/
 ENV/
 env/
 .venv
+pipenv/
 
 # IDE
 .vscode/
@@ -33,6 +35,8 @@ env/
 *.swo
 *~
 .DS_Store
+*.sublime-project
+*.sublime-workspace
 
 # Logs
 logs/*.log
@@ -43,26 +47,37 @@ reports/*.html
 reports/*.json
 reports/*.pdf
 fast_scan_results/*.html
+results/*.html
+fixed_results/*.html
 
 # Temporary files
 *.tmp
 *.temp
 .cache/
+*.bak
 
 # OS
 Thumbs.db
 .DS_Store
+desktop.ini
 
 # Sensitive data
 *.key
 *.pem
 *.env
 .env
+config.json
+*.secret
 
 # Test coverage
 .coverage
 htmlcov/
 .pytest_cache/
+.hypothesis/
+*.cover
+.tox/
+nosetests.xml
+coverage.xml
 
 # Documentation builds
 docs/_build/
@@ -75,3 +90,8 @@ models/
 # Custom payloads (may contain sensitive data)
 payloads/custom_*.txt
 payloads/private_*.txt
+
+# Development files
+.kiro/
+*.draft
+*.wip

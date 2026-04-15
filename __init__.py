@@ -3,11 +3,11 @@ Astrava AI Security Scanner
 Advanced AI-Powered Web Security Scanner with OWASP Top 10 Coverage
 
 Author: RAM (Ram Prasad Sahoo)
-Version: 1.0.0
+Version: 1.1.0
 License: MIT
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "RAM (Ram Prasad Sahoo)"
 __email__ = "ramprasadsahoo42@gmail.com"
 __license__ = "Proprietary"

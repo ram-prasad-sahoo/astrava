@@ -75,9 +75,9 @@ class AstravaAIScanner:
                     self.logger.info("Skipping Active Reconnaissance (Basic Mode)")
                     self.scan_results['reconnaissance']['active'] = {'ports': [], 'services': []}
                 
-                # AI Analysis of reconnaissance data
+                # AI Analysis of reconnaissance data (skipped in basic/fast mode)
                 recon_data = self.scan_results['reconnaissance']
-                if recon_data:
+                if recon_data and not getattr(self, 'skip_ai_analysis', False):
                     self.logger.info("Analyzing reconnaissance data with AI...")
                     recon_analysis = await self.ai_engine.generate_reconnaissance_analysis(recon_data)
                     self.scan_results['ai_analysis']['reconnaissance'] = recon_analysis

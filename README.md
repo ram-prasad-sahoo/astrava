@@ -1,811 +1,596 @@
 <div align="center">
 
-![Astrava Logo](logo.png)
+<img src="logo.png" alt="Astrava Logo" width="200"/>
 
-# ASTRAVA AI Security Scanner
+# 🛡️ Astrava AI Security Scanner
 
-### Professional AI-Powered Web Application Security Testing Platform
+### *Advanced AI-Powered Web Vulnerability Scanner*
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v1.0.0-orange.svg)](https://github.com/ram-prasad-sahoo/astrava)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![OWASP](https://img.shields.io/badge/OWASP-Top%2010%202021-red?style=for-the-badge&logo=owasp&logoColor=white)](https://owasp.org/)
+[![AI](https://img.shields.io/badge/AI-Ollama%20Powered-green?style=for-the-badge&logo=ai&logoColor=white)](https://ollama.ai/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey?style=for-the-badge)](https://github.com/ram-prasad-sahoo/astrava)
 
-**Enterprise-grade security scanner combining traditional penetration testing with AI analysis**
+**Professional-grade security testing tool for penetration testers and security researchers**
+
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing) • [⭐ Star Us](https://github.com/ram-prasad-sahoo/astrava)
 
 </div>
 
 ---
 
-## 📖 Table of Contents
+## 🌟 Overview
 
-- [What is ASTRAVA?](#-what-is-astrava)
-- [Key Features](#-key-features)
-- [System Requirements](#-system-requirements)
-- [Installation](#-installation)
-- [How to Run](#-how-to-run)
-- [Usage Examples](#-usage-examples)
-- [Scan Modes](#-scan-modes)
-- [Troubleshooting](#-troubleshooting)
-- [Help & Support](#-help--support)
-- [Legal Notice](#️-legal-notice)
-- [Author](#-author)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
-- [Share & Promote](#-share--promote)
+**Astrava** is a cutting-edge web security scanner that seamlessly combines traditional vulnerability detection with AI-powered analysis using local Ollama models. Built for security professionals who value both power and privacy.
 
----
+### ✨ Key Features
 
-## 🎯 What is ASTRAVA?
+<table>
+<tr>
+<td width="50%">
 
-**ASTRAVA** (Advanced Security Testing & Risk Assessment with Vulnerability Analysis) is a professional-grade AI-powered web application security scanner designed for:
+#### 🤖 **AI-Powered Analysis**
+- Local Ollama integration
+- Privacy-focused processing
+- No cloud dependencies
+- Multiple model support
 
-- 🔒 **Security Professionals** - Comprehensive penetration testing
-- 👨‍💻 **Developers** - Pre-deployment security checks
-- 🏢 **Organizations** - Regular security assessments
-- 🎓 **Students** - Learning security testing
+#### 🛡️ **OWASP Top 10 2021**
+- Complete coverage
+- A01 to A10 categories
+- Real-world attack scenarios
+- Professional reporting
 
-### Why Choose ASTRAVA?
+</td>
+<td width="50%">
 
-ASTRAVA combines traditional vulnerability scanning with cutting-edge AI technology to provide:
+#### 🌐 **Modern Web Interface**
+- Real-time vulnerability feed
+- Live scan statistics
+- Intuitive dashboard
+- Dark theme UI
 
-✅ **Intelligent Analysis** - AI-powered vulnerability detection using LLaMA 3.2  
-✅ **OWASP Coverage** - Complete OWASP Top 10 2021 testing  
-✅ **Multiple Modes** - Basic, Medium, and Aggressive scanning  
-✅ **Detailed Reports** - Beautiful HTML reports with risk scoring  
-✅ **Easy to Use** - Simple installation and intuitive interface  
+#### ⚡ **Smart & Fast**
+- Intelligent payload caching
+- Multi-threaded scanning
+- Optimized performance
+- Quick scan modes
 
----
+</td>
+</tr>
+</table>
 
-## ✨ Key Features
+### 🎯 Why Choose Astrava?
 
-### 🤖 AI-Powered Intelligence
-
-- **LLaMA 3.2 Integration** - Advanced AI model for intelligent vulnerability analysis
-- **Smart Payload Generation** - Context-aware exploit payloads
-- **Chain Attack Detection** - Identifies multi-step exploitation paths
-- **Risk Assessment** - AI-driven vulnerability prioritization
-- **Executive Summaries** - Business impact analysis
-
-### 🔍 Comprehensive Testing
-
-**OWASP Top 10 2021 Coverage:**
-
-| # | Category | Tests Included |
-|---|----------|----------------|
-| A01 | Broken Access Control | IDOR, Path Traversal, Privilege Escalation |
-| A02 | Cryptographic Failures | Weak SSL/TLS, Insecure Protocols |
-| A03 | Injection | SQL, NoSQL, Command, LDAP, XXE |
-| A04 | Insecure Design | Business Logic Flaws |
-| A05 | Security Misconfiguration | Default Credentials, Unnecessary Features |
-| A06 | Vulnerable Components | Outdated Software Detection |
-| A07 | Authentication Failures | Weak Passwords, Session Issues |
-| A08 | Data Integrity Failures | Deserialization Attacks |
-| A09 | Logging Failures | Security Event Analysis |
-| A10 | SSRF | Server-Side Request Forgery |
-
-### 🎨 Professional Interface
-
-- **Modern GUI** - Burp Suite-inspired blue-gray theme
-- **Real-time Monitoring** - Live vulnerability detection
-- **Color-coded Severity** - Critical (Red), High (Orange), Medium (Yellow), Low (Blue)
-- **Multiple Views** - Console, Vulnerabilities, Summary, AI Analysis
-- **Export Options** - HTML and JSON reports
+```
+✓ Privacy First      → All AI processing happens locally on your machine
+✓ One Command        → Unified interface for both GUI and CLI modes
+✓ Cross-Platform     → Works seamlessly on Windows, Linux, and macOS
+✓ Professional       → Enterprise-grade reports with remediation guidance
+✓ Open Source        → MIT License, free forever
+✓ Easy Setup         → One-command installation, ready in minutes
+```
 
 ---
 
-## 💻 System Requirements
+## 🚀 Quick Start
 
-### Minimum Requirements
+### 📦 Installation
 
-- **Operating System**: 
-  - Windows 10/11
-  - Linux: Ubuntu 20.04+, Kali Linux, Parrot OS, Debian, Fedora, Arch
-  - macOS 11+
-- **Python**: 3.8 or higher
-- **RAM**: 4GB minimum
-- **Storage**: 5GB free space
-- **Internet**: Required for initial setup
+<details open>
+<summary><b>🪟 Windows</b></summary>
 
-### ✅ Tested On
-
-ASTRAVA has been tested and works perfectly on:
-- ✅ **Kali Linux** (2023.x and later)
-- ✅ **Parrot Security OS** (5.x and later)
-- ✅ **Ubuntu** (20.04, 22.04, 24.04)
-- ✅ **Debian** (11, 12)
-- ✅ **Windows** (10, 11)
-- ✅ **macOS** (11+)
-
-### Recommended Specifications
-
-- **RAM**: 8GB or more
-- **CPU**: Multi-core processor (4+ cores)
-- **Storage**: 10GB free space
-- **Internet**: Stable connection
-
----
-
-## 🚀 Installation
-
-### Quick Install (Recommended)
-
-**Step 1: Clone the Repository**
 ```bash
 git clone https://github.com/ram-prasad-sahoo/astrava.git
 cd astrava
-```
-
-**Step 2: Run the Installer**
-
-**Windows:**
-```bash
-# Run the automated installer
 install.bat
 ```
 
-**Linux/macOS:**
-```bash
-# Make installer executable
-chmod +x install.sh
+</details>
 
-# Run installer
+<details>
+<summary><b>🐧 Linux</b></summary>
+
+```bash
+git clone https://github.com/ram-prasad-sahoo/astrava.git
+cd astrava
+chmod +x install.sh
 ./install.sh
 ```
 
-The installer will automatically:
-- ✅ Check Python 3.8+
-- ✅ Install all dependencies
-- ✅ Install Ollama + LLaMA 3.2:3b
-- ✅ Create necessary directories
-- ✅ Verify installation
+</details>
 
-### Manual Installation
+<details>
+<summary><b>🍎 macOS</b></summary>
 
-**Step 1: Install Python**
-- Download Python 3.8+ from [python.org](https://python.org)
-- Make sure to check "Add Python to PATH"
-
-**Step 2: Install Dependencies**
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/ram-prasad-sahoo/astrava.git
+cd astrava
+chmod +x install.sh
+./install.sh
 ```
 
-**Step 3: Install Ollama**
+</details>
 
-**Windows:**
-- Download from [ollama.ai](https://ollama.ai)
-- Run the installer
+### 🎮 Launch Application
 
-**Linux (Ubuntu/Debian/Kali/Parrot):**
-```bash
-curl -fsSL https://ollama.ai/install.sh | sh
-```
+#### 🌐 Web GUI Mode (Recommended)
 
-**Kali Linux / Parrot OS (Alternative):**
-```bash
-# If above doesn't work, use:
-sudo apt update
-sudo apt install curl
-curl -fsSL https://ollama.ai/install.sh | sudo sh
-```
-
-**macOS:**
-```bash
-brew install ollama
-```
-
-**Step 4: Download AI Model**
-```bash
-ollama pull llama3.2:3b
-```
-
-**Step 5: Verify Installation**
-```bash
-python verify_installation.py
-```
-
----
-
-## 🎮 How to Run
-
-### GUI Mode (Recommended)
-
-**Launch Professional GUI:**
-```bash
-python astrava_gui.py
-```
-
-Or use the main launcher:
 ```bash
 python astrava.py
 ```
 
-**GUI Features:**
-- 📊 Real-time vulnerability statistics
-- 🔍 Live console output
-- 📈 Interactive vulnerability tree
-- 🤖 AI analysis dashboard
+Then open your browser at: **http://localhost:5000**
 
-### CLI Mode
+#### 💻 CLI Mode
 
-**Basic Commands:**
 ```bash
-# Show help
-python astrava.py --help
-
-# Basic scan (Fast)
-python astrava.py -u https://example.com --basic
-
-# Medium scan (Standard)
+# Basic scan
 python astrava.py -u https://example.com
 
-# Aggressive scan (Thorough)
-python astrava.py -u https://example.com --aggressive
-```
+# Full OWASP Top 10 scan
+python astrava.py -u https://example.com --owasp-all
 
-**Advanced Commands:**
-```bash
-# Full OWASP testing
-python main.py -u https://example.com --owasp-all
+# Aggressive scan with chain attacks
+python astrava.py -u https://example.com --owasp-all --chain-attacks
 
-# Chain attack detection
-python main.py -u https://example.com --chain-attacks
-
-# Custom payloads
-python main.py -u https://example.com --custom-payloads payloads.txt
-
-# Verbose output with JSON report
-python main.py -u https://example.com --verbose --format json
-```
-
----
-
-## 📊 Usage Examples
-
-### Example 1: Quick Security Check
-
-```bash
-# Fast scan for quick assessment
-python astrava.py -u http://testphp.vulnweb.com/ --basic
-```
-
-**Use Case:** Quick initial assessment before detailed testing
-
-### Example 2: Standard Security Assessment
-
-```bash
-# Medium scan with OWASP Top 10
-python astrava.py -u http://demo.testfire.net/
-```
-
-**Use Case:** Regular security testing and compliance checks
-
-### Example 3: Thorough Security Audit
-
-```bash
-# Aggressive scan with all features
-python astrava.py -u https://example.com --aggressive --verbose
-```
-
-**Use Case:** Pre-production security audit and penetration testing
-
-### Example 4: Custom Testing
-
-```bash
-# Advanced scan with custom payloads
-python main.py -u https://example.com --owasp-all --chain-attacks \
-               --custom-payloads payloads/custom.txt --threads 20
-```
-
-**Use Case:** Specialized testing with custom attack vectors
-
-### Test Targets (For Practice)
-
-```bash
-# Vulnerable PHP application
-python astrava.py -u http://testphp.vulnweb.com/
-
-# Banking demo application
-python astrava.py -u http://demo.testfire.net/
-
-# HTTP testing service
-python astrava.py -u https://httpbin.org/
-```
-
----
-
-## 🎯 Scan Modes
-
-### ⚡ Basic Scan
-
-**Duration:** Fast scan
-
-**Features:**
-- Fast vulnerability detection
-- Common security issues
-- OWASP Top 10: OFF by default
-- Chain Attacks: Not available
-
-**Best For:**
-- Quick initial assessment
-- Time-sensitive scans
-- Basic security checks
-
-**Command:**
-```bash
-python astrava.py -u <URL> --basic
-```
-
-### 🔍 Medium Scan (Default)
-
-**Duration:** Standard scan
-
-**Features:**
-- Comprehensive OWASP Top 10 testing
-- AI-powered vulnerability analysis
-- OWASP Top 10: ON by default
-- Chain Attacks: Optional
-
-**Best For:**
-- Standard security assessment
-- Regular testing
-- Compliance checks
-
-**Command:**
-```bash
-python astrava.py -u <URL>
-```
-
-### 🔥 Aggressive Scan
-
-**Duration:** Thorough scan
-
-**Features:**
-- Deep penetration testing
-- AI chain attack detection
-- OWASP Top 10: ON by default
-- Chain Attacks: ON by default
-
-**Best For:**
-- Thorough security audit
-- Pre-production testing
-- Penetration testing
-
-**Command:**
-```bash
-python astrava.py -u <URL> --aggressive
-```
-
----
-
-## 🔧 Troubleshooting
-
-### Common Issues and Solutions
-
-#### Issue 1: Python Not Found
-
-**Problem:** `python: command not found`
-
-**Solution:**
-```bash
-# Windows: Reinstall Python and check "Add to PATH"
-# Linux/Mac: Install Python 3
-sudo apt install python3  # Ubuntu/Debian
-brew install python3      # macOS
-```
-
-#### Issue 2: Ollama Not Starting
-
-**Problem:** Ollama service won't start
-
-**Solution:**
-```bash
-# Start Ollama manually
-ollama serve
-
-# Check if running
-curl http://localhost:11434/api/tags
-```
-
-#### Issue 3: LLaMA Model Not Found
-
-**Problem:** Model download interrupted or missing
-
-**Solution:**
-```bash
-# Download model again
-ollama pull llama3.2:3b
-
-# Verify installation
-ollama list
-```
-
-#### Issue 4: Dependencies Installation Failed
-
-**Problem:** pip install fails
-
-**Solution:**
-```bash
-# Upgrade pip first
-python -m pip install --upgrade pip
-
-# Install dependencies again
-pip install -r requirements.txt
-
-# If specific package fails, install individually
-pip install aiohttp requests dnspython beautifulsoup4
-```
-
-#### Issue 5: Permission Denied (Linux/Mac)
-
-**Problem:** Permission errors during installation
-
-**Solution:**
-```bash
-# Don't use sudo for the installer
-# But you may need sudo for Ollama
-curl -fsSL https://ollama.ai/install.sh | sudo sh
-```
-
-#### Issue 6: GUI Not Opening
-
-**Problem:** GUI window doesn't appear
-
-**Solution:**
-```bash
-# Check if tkinter is installed
-python -c "import tkinter"
-
-# If error, install tkinter
-# Ubuntu/Debian:
-sudo apt-get install python3-tk
-
-# macOS: (usually included with Python)
-brew install python-tk
-```
-
-#### Issue 7: Unicode/Encoding Errors
-
-**Problem:** Character encoding errors in console
-
-**Solution:**
-```bash
-# Set environment variable
-# Windows:
-set PYTHONIOENCODING=utf-8
-
-# Linux/Mac:
-export PYTHONIOENCODING=utf-8
-```
-
-#### Issue 8: Scan Hangs or Freezes
-
-**Problem:** Scan stops responding
-
-**Solution:**
-- Reduce threads: `--threads 5`
-- Increase timeout: `--timeout 60`
-- Check internet connection
-- Try basic scan first
-
-### Verification
-
-Run the verification script to check your installation:
-
-```bash
-python verify_installation.py
-# or on some Linux systems:
-python3 verify_installation.py
-```
-
-This will check:
-- ✅ Python version
-- ✅ All dependencies
-- ✅ Ollama installation
-- ✅ LLaMA model
-- ✅ Project structure
-
-### 🐧 Special Notes for Kali/Parrot Users
-
-**Python Command:**
-```bash
-# Kali/Parrot usually use python3
-python3 astrava.py --help
-python3 astrava_gui.py
-```
-
-**If pip not found:**
-```bash
-sudo apt update
-sudo apt install python3-pip
-```
-
-**If tkinter not found (for GUI):**
-```bash
-sudo apt install python3-tk
-```
-
----
-
-## �  Running on Kali Linux / Parrot OS
-
-### Quick Start for Kali/Parrot Users
-
-**1. Install Dependencies:**
-```bash
-# Update system
-sudo apt update && sudo apt upgrade -y
-
-# Install Python and pip (if not already installed)
-sudo apt install python3 python3-pip python3-tk -y
-
-# Install required packages
-pip3 install -r requirements.txt
-```
-
-**2. Install Ollama:**
-```bash
-# Download and install Ollama
-curl -fsSL https://ollama.ai/install.sh | sudo sh
-
-# Start Ollama service
-ollama serve &
-
-# Download LLaMA model
-ollama pull llama3.2:3b
-```
-
-**3. Run ASTRAVA:**
-```bash
-# Launch GUI
-python3 astrava_gui.py
-
-# Or use CLI
-python3 astrava.py -u http://testphp.vulnweb.com/ --basic
-```
-
-### Kali/Parrot Specific Commands
-
-**Check Python Version:**
-```bash
-python3 --version
-# Should show Python 3.8 or higher
-```
-
-**Install Missing Dependencies:**
-```bash
-# If you get import errors
-pip3 install aiohttp requests dnspython beautifulsoup4 lxml
-```
-
-**Run as Root (Not Recommended):**
-```bash
-# If you must run as root
-sudo python3 astrava.py -u <URL>
-```
-
-**Add to PATH (Optional):**
-```bash
-# Add alias to .bashrc or .zshrc
-echo "alias astrava='python3 ~/path/to/astrava.py'" >> ~/.bashrc
-source ~/.bashrc
-
-# Now you can run:
-astrava -u <URL>
-```
-
-### Integration with Kali Tools
-
-ASTRAVA works alongside other Kali tools:
-
-```bash
-# Use with nmap results
-nmap -sV target.com -oX scan.xml
-python3 astrava.py -u http://target.com
-
-# Use with nikto
-nikto -h target.com
-python3 astrava.py -u http://target.com --aggressive
-
-# Use with burpsuite
-# Export targets from Burp and scan with ASTRAVA
-python3 astrava.py -u http://target.com --owasp-all
-```
-
-### Performance Tips for Kali/Parrot
-
-**Optimize for VM:**
-```bash
-# If running in VM, reduce threads
-python3 astrava.py -u <URL> --threads 5
-
-# Increase timeout for slow connections
-python3 astrava.py -u <URL> --timeout 60
-```
-
-**Save Resources:**
-```bash
-# Use basic scan for quick checks
-python3 astrava.py -u <URL> --basic
-
-# Close other applications
-# Allocate at least 4GB RAM to VM
-```
-
----
-
-## 📚 Help & Support
-
-### Getting Help
-
-**Command Line Help:**
-```bash
-# Main launcher help
+# Get help
 python astrava.py --help
-
-# Advanced options help
-python main.py --help
-
-# Verify installation
-python verify_installation.py
 ```
 
+---
 
+## 📋 Requirements
 
-### Contact & Support
+| Component | Version | Required | Notes |
+|-----------|---------|----------|-------|
+| 🐍 **Python** | 3.8+ | ✅ Yes | Core runtime |
+| 🌐 **Internet** | - | ✅ Yes | For scanning targets |
+| 🤖 **Ollama** | Latest | ⚠️ Optional | For AI features |
 
-- 📧 **Email**: ramprasadsahoo42@gmail.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/ram-prasad-sahoo/astrava/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/ram-prasad-sahoo/astrava/discussions)
+### 🤖 AI Setup (Optional but Recommended)
 
-### Frequently Asked Questions
+<details>
+<summary><b>Click to expand AI setup instructions</b></summary>
 
-**Q: Is ASTRAVA free to use?**  
-A: Yes, ASTRAVA is open-source and free under MIT License.
+#### Step 1: Install Ollama
 
-**Q: Can I use it for commercial purposes?**  
-A: Yes, but only on systems you own or have permission to test.
+- **Windows**: Download from [ollama.ai](https://ollama.ai)
+- **Linux**: `curl -fsSL https://ollama.ai/install.sh | sh`
+- **macOS**: `brew install ollama`
 
-**Q: Does it work on Windows?**  
-A: Yes, ASTRAVA supports Windows, Linux, and macOS.
+#### Step 2: Download AI Model
 
-**Q: How much does the AI model cost?**  
-A: The LLaMA model is free and runs locally via Ollama.
+Choose based on your system resources:
 
-**Q: Can I add custom payloads?**  
-A: Yes, use `--custom-payloads` option with your payload file.
+```bash
+# 🎯 Recommended (Security-focused)
+ollama pull xploiter/pentester
 
-**Q: Is it safe to use?**  
-A: Yes, but only use on authorized systems. Unauthorized scanning is illegal.
+# 💡 Alternatives
+ollama pull llama3.2:1b    # 1GB RAM - Lightweight
+ollama pull llama3.2:3b    # 2GB RAM - Balanced
+ollama pull qwen2.5:3b     # 2GB RAM - Alternative
+ollama pull mistral:7b     # 4GB RAM - Powerful
+```
 
-**Q: Does it work on Kali Linux?**  
-A: Yes! ASTRAVA works perfectly on Kali Linux, Parrot OS, and all Debian-based distributions.
+#### Step 3: Configure in Astrava
 
-**Q: Can I run it in a VM?**  
-A: Yes, but allocate at least 4GB RAM and 10GB storage for best performance.
+1. Launch: `python astrava.py`
+2. Navigate to **AI Model Settings**
+3. Select your downloaded model
+4. Click **Save Settings**
+
+✅ Done! AI-powered scanning is now active.
+
+</details>
 
 ---
 
-## ⚖️ Legal Notice
+## 🎚️ Scan Modes
 
-**⚠️ IMPORTANT: Authorized Use Only**
-
-ASTRAVA is designed for authorized security testing and educational purposes only.
-
-**Legal Requirements:**
-
-✅ **DO:**
-- Only scan systems you own
-- Get explicit written permission before testing
-- Use for educational purposes
-- Follow responsible disclosure practices
-- Comply with all applicable laws
-
-❌ **DON'T:**
-- Scan systems without permission
-- Use for malicious purposes
-- Violate computer crime laws
-- Ignore terms of service
-- Exploit vulnerabilities beyond proof-of-concept
-
-**Disclaimer:**
-- Users are responsible for complying with all applicable laws
-- Unauthorized access to computer systems is illegal
-- The developer assumes no liability for misuse
-- This tool is provided "as is" without warranty
-
-**Responsible Disclosure:**
-
-If you discover vulnerabilities:
-1. Do not exploit beyond proof-of-concept
-2. Report to the system owner immediately
-3. Allow reasonable time for fixes
-4. Follow responsible disclosure practices
+<table>
+<thead>
+<tr>
+<th width="20%">Mode</th>
+<th width="30%">Description</th>
+<th width="15%">Duration</th>
+<th width="35%">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>⚡ Basic</b></td>
+<td>Fast scan, core vulnerabilities</td>
+<td>1-3 min</td>
+<td>Quick security assessment</td>
+</tr>
+<tr>
+<td><b>🎯 Standard</b></td>
+<td>OWASP Top 10 + vulnerability scan</td>
+<td>5-15 min</td>
+<td>Regular security testing</td>
+</tr>
+<tr>
+<td><b>🔥 Aggressive</b></td>
+<td>Full scan + chain attacks + deep AI</td>
+<td>15-45 min</td>
+<td>Comprehensive security audit</td>
+</tr>
+</tbody>
+</table>
 
 ---
 
-## 👨‍💻 Author
+## 🛡️ OWASP Top 10 Coverage
 
-**Made with ❤️ by RAM**
+<div align="center">
 
-**Developer:** Ram Prasad Sahoo  
-**Email:** ramprasadsahoo42@gmail.com  
-**GitHub:** [@ram-prasad-sahoo](https://github.com/ram-prasad-sahoo)
+| # | Category | Tests Included | Status |
+|:-:|----------|----------------|:------:|
+| **A01** | 🔓 Broken Access Control | IDOR, Path Traversal, Forced Browsing | ✅ |
+| **A02** | 🔐 Cryptographic Failures | SSL/TLS, Weak Ciphers, Sensitive Data | ✅ |
+| **A03** | 💉 Injection | SQL, NoSQL, LDAP, Command, XSS | ✅ |
+| **A04** | 🎨 Insecure Design | Debug Info, Business Logic Flaws | ✅ |
+| **A05** | ⚙️ Security Misconfiguration | Headers, Default Creds, Error Handling | ✅ |
+| **A06** | 📦 Vulnerable Components | Version Detection, CVE Matching | ✅ |
+| **A07** | 🔑 Authentication Failures | Cookie Security, Session Management | ✅ |
+| **A08** | 🔗 Software & Data Integrity | Deserialization, Supply Chain | ✅ |
+| **A09** | 📊 Logging & Monitoring | Logging Gap Assessment | ✅ |
+| **A10** | 🌐 SSRF | Cloud Metadata, Internal Services | ✅ |
 
-*Empowering security professionals with AI-driven vulnerability assessment*
+</div>
 
 ---
 
-## 📄 License
+## 🔧 Advanced Usage
 
-This project is licensed under a **Proprietary License** with the following terms:
+### 📝 Command-Line Options
 
-✅ **Allowed:**
-- Free to use for personal, educational, and commercial security testing
-- Download and run the software
-- Use on authorized systems
-- **Promote, share, and recommend the software**
-- **Create tutorials, reviews, and educational content**
-- **Share the GitHub repository link with attribution**
+```bash
+python astrava.py --help
+```
 
-❌ **Not Allowed Without Permission:**
-- Modify or create derivative works
-- Copy or redistribute the source code
-- Sell or sublicense the software
-- Claim ownership or remove attribution
+<details>
+<summary><b>View all available options</b></summary>
 
-📧 **For Modifications or Commercial Licensing:** Contact ramprasadsahoo42@gmail.com
+#### 🎯 Basic Options
+- **No arguments** → Launch Web GUI (default)
+- `-u, --url URL` → Target URL for CLI scan
+- `--version` → Show version information
+- `--help` → Display help message
 
-🌟 **Help Us Grow:** We encourage you to share and promote ASTRAVA! Create tutorials, write reviews, or recommend it to others in the security community.
+#### 🔍 Scan Options
+- `--owasp-all` → Test all OWASP Top 10 categories
+- `--chain-attacks` → Enable multi-step attack detection
+- `--passive-only` → Passive reconnaissance only
+- `--active-only` → Active scanning only
 
-See the [LICENSE](LICENSE) file for complete terms and conditions.
+#### ⚙️ Configuration
+- `--model MODEL` → AI model to use (default: xploiter/pentester)
+- `--threads N` → Concurrent threads (default: 10)
+- `--timeout SEC` → Request timeout (default: 30)
+- `--custom-payloads FILE` → Custom payload file
+
+#### 📊 Output Options
+- `-o, --output DIR` → Output directory for reports
+- `--format FORMAT` → Report format (html, json, pdf)
+- `-v, --verbose` → Enable detailed logging
+
+</details>
+
+### 🎯 Usage Examples
+
+```bash
+# 🌐 Launch Web GUI
+python astrava.py
+
+# ⚡ Quick scan
+python astrava.py -u https://example.com
+
+# 🎯 Standard OWASP scan
+python astrava.py -u https://example.com --owasp-all
+
+# 🔥 Aggressive scan with all features
+python astrava.py -u https://example.com --owasp-all --chain-attacks --verbose
+
+# 🔍 Passive reconnaissance only
+python astrava.py -u https://example.com --passive-only
+
+# 🎨 Custom payloads
+python astrava.py -u https://example.com --custom-payloads payloads/custom.txt
+
+# 📊 JSON output with 20 threads
+python astrava.py -u https://example.com --format json --threads 20
+```
+
+---
+
+## 📊 Reports
+
+Reports are automatically saved to the `reports/` directory with:
+
+<table>
+<tr>
+<td width="50%">
+
+### 📈 **Report Contents**
+- ✅ Executive Summary
+- ✅ Risk Score (0-100)
+- ✅ Vulnerability Breakdown
+- ✅ Detailed Findings
+- ✅ AI-Generated Analysis
+- ✅ Remediation Guidance
+
+</td>
+<td width="50%">
+
+### 🎨 **Report Features**
+- 🌐 Professional HTML format
+- 📊 Visual charts and graphs
+- 🎯 Severity classification
+- 🔗 CWE references
+- 📝 OWASP mapping
+- 💡 Fix recommendations
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📁 Project Structure
+
+```
+astrava/
+├── 🎯 astrava.py                 # MAIN ENTRY POINT (GUI + CLI)
+├── 🌐 web_gui.py                 # Flask web server backend
+├── 💻 main.py                    # Legacy CLI entry point
+│
+├── 🧠 core/
+│   ├── ai_engine.py              # AI engine with streaming
+│   ├── scanner_engine.py         # Main scan orchestrator
+│   └── config.py                 # Scan configuration
+│
+├── 🔍 modules/
+│   ├── vulnerability_scanner.py  # Core vulnerability detection
+│   ├── owasp_scanner.py          # OWASP Top 10 tests
+│   ├── reconnaissance.py         # Passive/active recon
+│   └── chain_attacks.py          # Attack chain analysis
+│
+├── 🛠️ utils/
+│   ├── model_manager.py          # AI routing
+│   ├── ollama_manager.py         # Ollama lifecycle
+│   ├── config_store.py           # Encrypted config
+│   └── report_generator.py       # HTML reports
+│
+├── 🎨 templates/
+│   └── index.html                # Web GUI template
+│
+├── 📦 Installation
+│   ├── install.bat               # Windows installer
+│   ├── install.sh                # Linux/macOS installer
+│   ├── requirements.txt          # Python dependencies
+│   └── verify_installation.py   # Installation check
+│
+└── 📖 Documentation
+    ├── README.md                 # This file
+    └── LICENSE                   # MIT License
+```
+
+---
+
+## 🌍 Cross-Platform Support
+
+<div align="center">
+
+| Platform | Status | Tested Versions |
+|:--------:|:------:|:----------------|
+| 🪟 **Windows** | ✅ Fully Supported | 10, 11, Server 2019+ |
+| 🐧 **Linux** | ✅ Fully Supported | Ubuntu 20.04+, Debian 10+, Fedora 35+, Arch, Kali |
+| 🍎 **macOS** | ✅ Fully Supported | 10.15+ (Intel & Apple Silicon) |
+
+</div>
+
+---
+
+## 🚀 Performance
+
+<table>
+<tr>
+<td align="center" width="33%">
+<h3>⚡ Fast</h3>
+Multi-threaded scanning<br/>
+Smart payload caching<br/>
+Optimized algorithms
+</td>
+<td align="center" width="33%">
+<h3>🎯 Accurate</h3>
+Low false positives<br/>
+AI-powered validation<br/>
+Real-world attack scenarios
+</td>
+<td align="center" width="33%">
+<h3>🔒 Secure</h3>
+Local AI processing<br/>
+No data leakage<br/>
+Privacy-focused design
+</td>
+</tr>
+</table>
+
+---
+
+## 📚 Documentation
+
+### 🎓 Quick Reference
+
+| Command | Description |
+|---------|-------------|
+| `python astrava.py` | Launch Web GUI |
+| `python astrava.py -u <URL>` | CLI scan mode |
+| `python astrava.py --help` | Show help |
+| `python astrava.py --version` | Show version |
+| `python verify_installation.py` | Verify installation |
+
+### 📖 Additional Resources
+
+- 🌐 [GitHub Repository](https://github.com/ram-prasad-sahoo/astrava)
+- 📧 [Email Support](mailto:ramprasadsahoo42@gmail.com)
+- 🐛 [Report Issues](https://github.com/ram-prasad-sahoo/astrava/issues)
+- ⭐ [Star on GitHub](https://github.com/ram-prasad-sahoo/astrava)
+
+---
+
+## ⚠️ Legal Disclaimer
+
+<div align="center">
+
+### 🚨 **IMPORTANT: READ BEFORE USE** 🚨
+
+</div>
+
+> **This tool is designed for AUTHORIZED SECURITY TESTING ONLY.**
+
+#### ✅ Permitted Use
+- ✓ Testing systems you **own**
+- ✓ Testing with **explicit written permission**
+- ✓ Educational purposes in **controlled environments**
+- ✓ Security research with **proper authorization**
+
+#### ❌ Prohibited Use
+- ✗ Unauthorized scanning of third-party systems
+- ✗ Malicious activities or attacks
+- ✗ Violating computer crime laws (CFAA, GDPR, etc.)
+- ✗ Any illegal or unethical activities
+
+#### 📜 Your Responsibilities
+- Obtain proper authorization before scanning
+- Comply with all applicable laws and regulations
+- Use the tool ethically and responsibly
+- Respect privacy and data protection laws
+
+**By using this tool, you agree to use it responsibly and legally. The authors assume NO LIABILITY for misuse or damages.**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+<table>
+<tr>
+<td align="center" width="25%">
+<h3>🐛</h3>
+<b>Report Bugs</b><br/>
+Found a bug?<br/>
+<a href="https://github.com/ram-prasad-sahoo/astrava/issues">Open an issue</a>
+</td>
+<td align="center" width="25%">
+<h3>💡</h3>
+<b>Suggest Features</b><br/>
+Have an idea?<br/>
+<a href="https://github.com/ram-prasad-sahoo/astrava/issues">Share it with us</a>
+</td>
+<td align="center" width="25%">
+<h3>🔧</h3>
+<b>Submit PRs</b><br/>
+Want to code?<br/>
+<a href="https://github.com/ram-prasad-sahoo/astrava/pulls">Create a pull request</a>
+</td>
+<td align="center" width="25%">
+<h3>⭐</h3>
+<b>Star the Repo</b><br/>
+Like the project?<br/>
+<a href="https://github.com/ram-prasad-sahoo/astrava">Give us a star!</a>
+</td>
+</tr>
+</table>
+
+### 🔄 Contribution Process
+
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. ✍️ Commit your changes (`git commit -m 'Add amazing feature'`)
+4. 📤 Push to the branch (`git push origin feature/amazing-feature`)
+5. 🎉 Open a Pull Request
+
+---
+
+## 📝 License
+
+<div align="center">
+
+**MIT License** - Free and Open Source
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+</div>
+
+---
+
+## 👤 Author
+
+<div align="center">
+
+### **RAM (Ram Prasad Sahoo)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-ram--prasad--sahoo-181717?style=for-the-badge&logo=github)](https://github.com/ram-prasad-sahoo)
+[![Email](https://img.shields.io/badge/Email-ramprasadsahoo42%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ramprasadsahoo42@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ram%20Prasad%20Sahoo-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ram-prasad-sahoo)
+
+</div>
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Ollama Team** - For the amazing AI runtime
-- **Meta AI** - For LLaMA models
-- **OWASP** - For security testing standards
-- **Security Community** - For continuous feedback
+<div align="center">
+
+Special thanks to:
+
+🛡️ **OWASP Foundation** - For security testing guidelines  
+🤖 **Ollama Team** - For local AI infrastructure  
+🌟 **Open Source Community** - For inspiration and support  
+💻 **Contributors** - For making this project better
+
+</div>
 
 ---
 
-## 🌟 Share & Promote
+## 📊 Project Stats
 
-**Love ASTRAVA? Help us grow!**
+<div align="center">
 
-We encourage you to share and promote ASTRAVA with the security community:
+![GitHub stars](https://img.shields.io/github/stars/ram-prasad-sahoo/astrava?style=social)
+![GitHub forks](https://img.shields.io/github/forks/ram-prasad-sahoo/astrava?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/ram-prasad-sahoo/astrava?style=social)
 
-✅ **Star the Repository** - Show your support on GitHub  
-✅ **Share on Social Media** - Twitter, LinkedIn, Reddit, Discord  
-✅ **Write Reviews** - Blog posts, Medium articles, YouTube videos  
-✅ **Create Tutorials** - Help others learn to use ASTRAVA  
-✅ **Recommend to Friends** - Share with fellow security professionals  
-✅ **Include in Tool Lists** - Add to your favorite security tools collection  
-
-**When sharing, please:**
-- Give credit to Ram Prasad Sahoo
-- Link to: https://github.com/ram-prasad-sahoo/astrava
-- Use hashtags: #ASTRAVA #SecurityScanner #AISecurityTesting #OWASP
-
-**Share Links:**
-- 🐦 Twitter: "Check out ASTRAVA - AI-Powered Security Scanner! 🔐 https://github.com/ram-prasad-sahoo/astrava"
-- 💼 LinkedIn: "Discovered an amazing AI-powered security scanner for OWASP Top 10 testing"
-- 🎥 YouTube: Create installation guides, tutorials, or demo videos
-- 📝 Blog: Write about your experience using ASTRAVA
-
-Your support helps make security testing accessible to everyone! 🚀
+</div>
 
 ---
 
+<div align="center">
+
+### 🌟 **If you find Astrava useful, please consider giving it a star!** ⭐
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ram-prasad-sahoo/astrava&type=Date)](https://star-history.com/#ram-prasad-sahoo/astrava&Date)
+
 ---
 
-**© 2025 RAM (Ram Prasad Sahoo). All Rights Reserved.**
+**Made with ❤️ by [Ram Prasad Sahoo](https://github.com/ram-prasad-sahoo)**
 
-This software is proprietary and protected by copyright law. Unauthorized copying, modification, distribution, or use of this software without explicit written permission from the copyright holder is strictly prohibited and may result in legal action.
+**Happy Ethical Hacking! 🛡️**
 
-**Version:** v1.0.0  
-**Last Updated:** November 2025
+</div>
 
-For licensing inquiries: ramprasadsahoo42@gmail.com
+---
+
+<div align="center">
+
+*Last Updated: April 2026 • Version 1.1.0*
+
+</div>

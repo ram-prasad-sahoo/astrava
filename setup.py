@@ -23,7 +23,7 @@ if requirements_file.exists():
 
 setup(
     name="Astrava-ai-security-scanner",
-    version="1.0.0",
+    version="1.1.0",
     author="RAM (Ram Prasad Sahoo)",
     author_email="ramprasadsahoo42@gmail.com",
     description="Advanced AI-Powered Web Security Scanner with OWASP Top 10 Coverage",

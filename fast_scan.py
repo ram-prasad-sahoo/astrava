@@ -18,7 +18,7 @@ from utils.logger import setup_logger
 from utils.banner import display_banner
 from utils.ollama_manager import OllamaManager
 
-async def fast_scan(target_url: str):
+async def fast_scan(target_url: str, model: str = None):
     """Run a fast scan with minimal AI usage"""
     
     display_banner()
@@ -32,15 +32,27 @@ async def fast_scan(target_url: str):
     print("=" * 70)
     print()
     
-    # Initialize Ollama automatically
+    # Get model from parameter or config
+    if not model:
+        try:
+            from utils import config_store
+            config = config_store.load_config()
+            model = config.get("active_model", "xploiter/pentester")
+        except:
+            model = "xploiter/pentester"
+
+    # Initialize AI Engine (Ollama only)
     print("Initializing AI Engine...")
-    ollama_manager = OllamaManager()
+    print(f"  Selected model: {model}")
+    ollama_manager = OllamaManager(model=model)
     success, message = ollama_manager.initialize(auto_download=True)
     if success:
         print(f"✓ {message}")
+        print(f"  Mode: Ollama | Model: {model}")
     else:
         print(f"⚠ {message}")
         print("  Continuing without AI features...")
+    
     print()
     
     # Setup optimized configuration for BASIC/FAST scan
@@ -49,12 +61,12 @@ async def fast_scan(target_url: str):
         target_url=target_url,
         owasp_all=False,  # NO OWASP testing in basic mode
         chain_attacks=False,  # Skip chain attacks for speed
-        model="llama3.2:3b",
-        max_threads=5,  # Reduced threads for faster scan
-        timeout=15,  # Reduced timeout
-        output_dir="./fast_scan_results",
+        model=model,  # Use the selected model
+        max_threads=10,
+        timeout=45,  # Sufficient for slow sites
+        output_dir="./reports",  # Same as main.py so GUI report finder picks it up
         skip_port_scan=True,  # Skip port scanning in basic mode
-        max_crawl_depth=1  # Shallow crawling only
+        max_crawl_depth=2  # Slightly deeper for better coverage
     )
     
     try:
@@ -129,11 +141,12 @@ def main():
     
     parser = argparse.ArgumentParser(description="Fast Astrava AI Security Scanner")
     parser.add_argument('-u', '--url', required=True, help='Target URL to scan')
+    parser.add_argument('--model', type=str, help='AI model to use (e.g., qwen3:4b, llama3.2:3b)')
     
     args = parser.parse_args()
     
-    # Run fast scan
-    asyncio.run(fast_scan(args.url))
+    # Run fast scan with specified model
+    asyncio.run(fast_scan(args.url, model=args.model))
 
 if __name__ == "__main__":
     main()

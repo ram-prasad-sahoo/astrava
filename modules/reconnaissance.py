@@ -69,9 +69,13 @@ class ReconnaissanceModule:
             search_results = await self.search_engine_recon()
             recon_data['search_engines'] = search_results
             
-            # Wayback machine
-            wayback_urls = await self.wayback_machine_recon()
-            recon_data['wayback_machine'] = wayback_urls
+            # Wayback machine (optional, can be slow)
+            if self.config.get('passive', {}).get('wayback_machine', True):
+                wayback_urls = await self.wayback_machine_recon()
+                recon_data['wayback_machine'] = wayback_urls
+            else:
+                self.logger.info("Wayback Machine search disabled in config")
+                recon_data['wayback_machine'] = []
             
             # Social media and code repositories
             social_intel = await self.social_intelligence()
@@ -285,7 +289,8 @@ class ReconnaissanceModule:
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
             
-            async with self.session.get(api_url, headers=headers, timeout=aiohttp.ClientTimeout(total=15)) as response:
+            # Reduced timeout to 10 seconds for faster scans
+            async with self.session.get(api_url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)) as response:
                 if response.status == 200:
                     content_type = response.headers.get('Content-Type', '')
                     
@@ -309,18 +314,18 @@ class ReconnaissanceModule:
                                     if url not in urls:
                                         urls.append(url)
                         else:
-                            self.logger.warning("Wayback Machine returned HTML instead of JSON (skipping)")
+                            self.logger.info("Wayback Machine returned HTML instead of JSON (skipping)")
                 else:
-                    self.logger.warning(f"Wayback Machine returned status {response.status} (skipping)")
+                    self.logger.info(f"Wayback Machine returned status {response.status} (skipping)")
                     
         except asyncio.TimeoutError:
-            self.logger.warning("Wayback Machine search timed out (skipping)")
+            self.logger.info("Wayback Machine search timed out (skipping) - this is normal")
         except aiohttp.ClientError as e:
-            self.logger.warning(f"Wayback Machine connection failed (skipping): {type(e).__name__}")
+            self.logger.info(f"Wayback Machine connection failed (skipping): {type(e).__name__}")
         except json.JSONDecodeError:
-            self.logger.warning("Wayback Machine returned invalid JSON (skipping)")
+            self.logger.info("Wayback Machine returned invalid JSON (skipping)")
         except Exception as e:
-            self.logger.warning(f"Wayback Machine search failed (skipping): {type(e).__name__}")
+            self.logger.info(f"Wayback Machine search failed (skipping): {type(e).__name__}")
         
         return urls[:50]  # Limit results
     

@@ -66,8 +66,8 @@ def check_optional_dependencies():
             print(f"    ⚠️  {module:20s} - {description} (Optional, not installed)")
 
 def check_ollama():
-    """Check Ollama installation"""
-    print("\n[4/6] Checking Ollama...")
+    """Check Ollama installation (optional)"""
+    print("\n[4/6] Checking Ollama (optional for AI features)...")
     
     try:
         result = subprocess.run(['ollama', '--version'], 
@@ -79,53 +79,66 @@ def check_ollama():
             print(f"    ✅ Ollama installed: {version}")
             return True
         else:
-            print("    ❌ Ollama not responding")
-            return False
+            print("    ⚠️  Ollama not responding")
+            print("       Optional: Install from https://ollama.ai for AI features")
+            return True  # Not critical
     except FileNotFoundError:
-        print("    ❌ Ollama not found")
-        print("       Install from: https://ollama.ai")
-        return False
+        print("    ⚠️  Ollama not found (optional)")
+        print("       Install from https://ollama.ai for AI-powered analysis")
+        return True  # Not critical
     except Exception as e:
-        print(f"    ❌ Error checking Ollama: {e}")
-        return False
+        print(f"    ⚠️  Error checking Ollama: {e}")
+        return True  # Not critical
 
 def check_ollama_service():
-    """Check if Ollama service is running"""
-    print("\n[5/6] Checking Ollama service...")
+    """Check if Ollama service is running (optional)"""
+    print("\n[5/6] Checking Ollama service (optional)...")
     
     try:
         import requests
         response = requests.get('http://localhost:11434/api/tags', timeout=2)
         if response.status_code == 200:
             print("    ✅ Ollama service is running")
+            
+            # List available models
+            models = response.json().get('models', [])
+            if models:
+                print(f"    ✅ Found {len(models)} AI model(s):")
+                for model in models[:5]:  # Show first 5
+                    print(f"       • {model.get('name', 'Unknown')}")
+                if len(models) > 5:
+                    print(f"       ... and {len(models) - 5} more")
+            else:
+                print("    ⚠️  No AI models found")
+                print("       Download with: ollama pull xploiter/pentester")
             return True
         else:
-            print("    ❌ Ollama service not responding")
-            return False
-    except Exception as e:
-        print("    ❌ Ollama service not running")
-        print("       Start with: ollama serve")
-        return False
+            print("    ⚠️  Ollama service not responding (optional)")
+            return True  # Not critical
+    except Exception:
+        print("    ⚠️  Ollama service not running (optional)")
+        print("       You can use cloud AI providers instead")
+        print("       Or start Ollama with: ollama serve")
+        return True  # Not critical
 
-def check_llama_model():
-    """Check if LLaMA model is available"""
-    print("\n[6/6] Checking LLaMA 3.2:3b model...")
+def check_ai_config():
+    """Check AI configuration"""
+    print("\n[6/6] Checking AI configuration...")
     
     try:
-        result = subprocess.run(['ollama', 'list'], 
-                              capture_output=True, 
-                              text=True, 
-                              timeout=5)
-        if 'llama3.2:3b' in result.stdout:
-            print("    ✅ LLaMA 3.2:3b model available")
+        from pathlib import Path
+        config_file = Path.home() / '.astrava' / 'config.json'
+        
+        if config_file.exists():
+            print("    ✅ AI configuration file found")
             return True
         else:
-            print("    ❌ LLaMA 3.2:3b model not found")
-            print("       Download with: ollama pull llama3.2:3b")
-            return False
+            print("    ⚠️  No AI configuration yet")
+            print("       Configure AI in Web GUI → AI Model Settings")
+            return True  # Not critical
     except Exception as e:
-        print(f"    ❌ Error checking model: {e}")
-        return False
+        print(f"    ⚠️  Could not check AI config: {e}")
+        return True  # Not critical
 
 def check_project_structure():
     """Check if project directories exist"""
@@ -161,11 +174,16 @@ def print_summary(results):
     if all(results.values()):
         print("\n  ✅ ALL CHECKS PASSED - Installation is complete!")
         print("\n  You can now run:")
-        print("     python astrava_gui.py    # Launch GUI")
-        print("     python astrava.py        # Launch GUI")
-        print("     python astrava.py --help # View CLI options")
+        print("     python astrava.py        # Launch Web GUI (Recommended)")
+        print("     python main.py --help    # View CLI options")
+        print("\n  🤖 AI Setup:")
+        print("     - Launch Web GUI: python astrava.py")
+        print("     - Go to AI Model Settings")
+        print("     - Install Ollama from https://ollama.ai")
     else:
-        print("\n  ❌ SOME CHECKS FAILED - Please fix the issues above")
+        print("\n  ⚠️  SOME CHECKS FAILED - Please fix critical issues above")
+        print("\n  Note: Ollama and AI configuration are optional")
+        print("  You can configure AI later in the Web GUI")
         print("\n  Run the installer again:")
         print("     Windows: install.bat")
         print("     Linux/Mac: ./install.sh")
@@ -179,9 +197,9 @@ def main():
     results = {
         'Python Version': check_python_version(),
         'Core Dependencies': check_core_dependencies(),
-        'Ollama': check_ollama(),
-        'Ollama Service': check_ollama_service(),
-        'LLaMA Model': check_llama_model(),
+        'Ollama (Optional)': check_ollama(),
+        'Ollama Service (Optional)': check_ollama_service(),
+        'AI Configuration': check_ai_config(),
     }
     
     # Optional checks

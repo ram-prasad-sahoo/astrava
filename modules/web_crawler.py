@@ -58,9 +58,19 @@ class WebCrawler:
     
     async def __aenter__(self):
         """Async context manager entry"""
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+        }
+        # Use longer total timeout than per-request timeout
+        timeout_val = max(self.config.timeout, 45)
         self.session = aiohttp.ClientSession(
-            timeout=aiohttp.ClientTimeout(total=self.config.timeout),
-            connector=aiohttp.TCPConnector(ssl=False)
+            timeout=aiohttp.ClientTimeout(total=timeout_val, connect=15),
+            connector=aiohttp.TCPConnector(ssl=False, limit=20),
+            headers=headers,
         )
         return self
     
@@ -137,14 +147,14 @@ class WebCrawler:
             self.logger.info(f"Crawling: {url} (depth: {depth})")
             print(f"   Crawling: {url}")
             
-            async with self.session.get(url, timeout=aiohttp.ClientTimeout(total=15)) as response:
+            async with self.session.get(url, timeout=aiohttp.ClientTimeout(total=30)) as response:
                 if response.status != 200:
                     self.logger.debug(f"Non-200 status: {response.status}")
                     return
                 
-                # Store cookies
-                for cookie in response.cookies:
-                    self.cookies[cookie.key] = cookie.value
+                # Store cookies — aiohttp cookies iteration yields names (str), use .items()
+                for name, morsel in response.cookies.items():
+                    self.cookies[name] = morsel.value
                 
                 content = await response.text()
                 content_type = response.headers.get('Content-Type', '').lower()

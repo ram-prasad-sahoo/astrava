@@ -102,12 +102,25 @@ install_python_deps() {
     fi
 }
 
-# Install Ollama
+# Install Ollama (optional)
 install_ollama() {
-    print_status "Checking Ollama installation..."
+    print_status "Checking Ollama installation (optional for AI features)..."
     
     if command -v ollama &> /dev/null; then
         print_success "Ollama already installed"
+        return 0
+    fi
+    
+    print_warning "Ollama not found"
+    echo
+    echo "Ollama is optional for AI-powered analysis."
+    echo
+    read -p "Install Ollama now? (y/n): " -n 1 -r
+    echo
+    
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        print_warning "Skipping Ollama installation"
+        print_status "You can install it later from: https://ollama.ai"
         return 0
     fi
     
@@ -120,15 +133,20 @@ install_ollama() {
             brew install ollama
         else
             print_warning "Homebrew not found. Please install Ollama manually from https://ollama.ai"
-            return 1
+            return 0
         fi
     fi
     
     print_success "Ollama installed"
 }
 
-# Start Ollama service
+# Start Ollama service (if installed)
 start_ollama() {
+    if ! command -v ollama &> /dev/null; then
+        print_warning "Ollama not installed - skipping service start"
+        return 0
+    fi
+    
     print_status "Starting Ollama service..."
     
     # Check if Ollama is already running
@@ -142,43 +160,47 @@ start_ollama() {
         nohup ollama serve > /dev/null 2>&1 &
         sleep 3
     elif [[ "$OS" == "macos" ]]; then
-        brew services start ollama
+        brew services start ollama 2>/dev/null || nohup ollama serve > /dev/null 2>&1 &
         sleep 3
     fi
     
     # Verify Ollama is running
-    if curl -s http://localhost:11434/api/tags > /dev/null; then
+    if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
         print_success "Ollama service started"
     else
-        print_error "Failed to start Ollama service"
-        return 1
+        print_warning "Ollama service may not be running - you can start it manually with: ollama serve"
     fi
 }
 
-# Download LLaMA model
-download_model() {
-    print_status "Checking LLaMA 3.2:3b model..."
-    
-    # Check if model already exists
-    if ollama list 2>/dev/null | grep -q "llama3.2:3b"; then
-        print_success "LLaMA 3.2:3b model already installed"
+# List available models (if Ollama is installed)
+list_models() {
+    if ! command -v ollama &> /dev/null; then
         return 0
     fi
     
-    print_warning "LLaMA 3.2:3b model not found"
-    print_status "Downloading LLaMA 3.2:3b model..."
-    print_status "This will download approximately 2GB of data. Please wait..."
-    echo
+    print_status "Checking available AI models..."
     
-    # Download model
-    ollama pull llama3.2:3b
-    
-    if [[ $? -eq 0 ]]; then
-        print_success "LLaMA 3.2:3b model downloaded successfully"
+    if ollama list 2>/dev/null | grep -q "NAME"; then
+        echo
+        ollama list 2>/dev/null
+        echo
     else
-        print_error "Failed to download LLaMA model"
-        print_error "Please try manually: ollama pull llama3.2:3b"
-        return 1
+        print_warning "No AI models found"
+        echo
+        echo "AI Model Recommendations:"
+        echo "Based on your system, you can download AI models:"
+        echo
+        echo "Recommended (Security-focused):"
+        echo "  ollama pull xploiter/pentester"
+        echo
+        echo "Alternative models (choose based on your system):"
+        echo "  ollama pull llama3.2:3b         (2GB RAM, general purpose)"
+        echo "  ollama pull qwen2.5:3b          (2GB RAM, alternative)"
+        echo "  ollama pull mistral:7b          (4GB RAM, more powerful)"
+        echo "  ollama pull llama3.2:1b         (1GB RAM, lightweight)"
+        echo
+        echo "Configure your preferred model in Web GUI after installation"
+        echo
     fi
 }
 
@@ -235,40 +257,41 @@ main() {
     # Install dependencies
     install_python_deps
     
-    # Install and configure Ollama
+    # Install and configure Ollama (optional)
     install_ollama
     start_ollama
-    download_model
+    list_models
     
     # Setup project
     create_directories
     set_permissions
     
-    # Verify everything works
-    verify_installation
-    
     echo
     print_success "🎉 ASTRAVA Installation Completed Successfully!"
     echo
-    echo "✅ All components verified and working correctly!"
+    echo "✅ Python dependencies installed"
     echo
     echo "📋 Quick Start Guide:"
     echo
-    echo "  Launch GUI:"
-    echo "    $PYTHON_CMD astrava_gui.py"
+    echo "  Launch Web GUI (Recommended):"
     echo "    $PYTHON_CMD astrava.py"
     echo
     echo "  CLI Scans:"
-    echo "    $PYTHON_CMD astrava.py -u https://httpbin.org --basic"
-    echo "    $PYTHON_CMD astrava.py -u https://httpbin.org"
-    echo "    $PYTHON_CMD astrava.py -u https://httpbin.org --aggressive"
-    echo
-    echo "  Verify Installation Anytime:"
-    echo "    $PYTHON_CMD verify_installation.py"
+    echo "    $PYTHON_CMD astrava.py -u https://example.com"
+    echo "    $PYTHON_CMD astrava.py -u https://example.com --owasp-all"
+    echo "    $PYTHON_CMD astrava.py -u https://example.com --owasp-all --chain-attacks"
     echo
     echo "  Get Help:"
     echo "    $PYTHON_CMD astrava.py --help"
-    echo "    $PYTHON_CMD main.py --help"
+    echo "    $PYTHON_CMD astrava.py --version"
+    echo
+    echo "🤖 AI Configuration:"
+    echo "  - Launch the Web GUI: $PYTHON_CMD astrava.py"
+    echo "  - Go to AI Model Settings"
+    echo "  - Install Ollama from https://ollama.ai"
+    echo "  - Recommended models:"
+    echo "      ollama pull xploiter/pentester  (security-focused)"
+    echo "      ollama pull llama3.2:3b         (general purpose)"
     echo
     echo "⚠️  IMPORTANT: Only scan systems you own or have permission to test!"
     echo

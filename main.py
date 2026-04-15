@@ -51,7 +51,7 @@ async def main():
 ║    ██║  ██║███████║   ██║   ██║  ██║██║  ██║ ╚████╔╝ ██║  ██║       ║
 ║    ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝       ║
 ║                                                                       ║
-║              AI SECURITY SCANNER v1.0                                ║
+║              AI SECURITY SCANNER v1.1.0                              ║
 ║         Advanced OWASP Top 10 2021 Scanner                           ║
 ║                                                                       ║
 ╚═══════════════════════════════════════════════════════════════════════╝
@@ -97,7 +97,7 @@ Use astrava.py for simplified mode selection:
   python astrava.py -u <URL> --aggressive  # Deep scan (Thorough)
 
 Or launch GUI:
-  python astrava_gui.py                    # Professional GUI interface
+  python web_gui.py                        # Web GUI interface
 
 ═══════════════════════════════════════════════════════════════════════
 LEGAL NOTICE:
@@ -118,6 +118,11 @@ For more information: https://github.com/ram-prasad-sahoo/astrava
                          required=True,
                          metavar='URL',
                          help='Target URL to scan (e.g., https://example.com)')
+    
+    # Version
+    parser.add_argument('--version',
+                       action='version',
+                       version='Astrava AI Security Scanner v1.1.0')
     
     # Scan Type Options
     scan_type = parser.add_argument_group('Scan Type Options')
@@ -140,9 +145,9 @@ For more information: https://github.com/ram-prasad-sahoo/astrava
                        metavar='FILE',
                        help='Path to custom payloads file (one payload per line)')
     custom.add_argument('--model',
-                       default='llama3.2:3b',
+                       default='xploiter/pentester',
                        metavar='MODEL',
-                       help='AI model to use (default: llama3.2:3b)')
+                       help='AI model to use (default: xploiter/pentester, or configure in Web GUI)')
     
     # Output Options
     output = parser.add_argument_group('Output Options')
@@ -176,6 +181,14 @@ For more information: https://github.com/ram-prasad-sahoo/astrava
     # Setup logging
     logger = setup_logger(verbose=args.verbose)
     
+    # Check active model from config
+    try:
+        from utils import config_store
+        config = config_store.load_config()
+        active_model = config.get("active_model", "xploiter/pentester")
+    except:
+        active_model = "xploiter/pentester"
+
     # Validate Ollama connection
     ai_engine = AIEngine(model=args.model)
     if not await ai_engine.validate_connection():
