@@ -27,6 +27,7 @@ ENV/
 env/
 .venv
 pipenv/
+.virtualenv
 
 # IDE
 .vscode/

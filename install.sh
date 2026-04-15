@@ -89,12 +89,42 @@ check_pip() {
     fi
 }
 
+# Create virtual environment
+create_venv() {
+    print_status "Creating Python virtual environment..."
+    
+    if [ -d "venv" ]; then
+        print_status "Virtual environment already exists, using existing one"
+    else
+        $PYTHON_CMD -m venv venv
+        if [ $? -eq 0 ]; then
+            print_success "Virtual environment created"
+        else
+            print_error "Failed to create virtual environment"
+            exit 1
+        fi
+    fi
+}
+
+# Activate virtual environment
+activate_venv() {
+    print_status "Activating virtual environment..."
+    
+    source venv/bin/activate
+    if [ $? -eq 0 ]; then
+        print_success "Virtual environment activated"
+    else
+        print_error "Failed to activate virtual environment"
+        exit 1
+    fi
+}
+
 # Install Python dependencies
 install_python_deps() {
-    print_status "Installing Python dependencies..."
+    print_status "Installing Python dependencies in virtual environment..."
     
     if [[ -f "requirements.txt" ]]; then
-        $PIP_CMD install -r requirements.txt
+        pip install -r requirements.txt
         print_success "Python dependencies installed"
     else
         print_error "requirements.txt not found"
@@ -254,6 +284,10 @@ main() {
     check_python
     check_pip
     
+    # Create and activate virtual environment
+    create_venv
+    activate_venv
+    
     # Install dependencies
     install_python_deps
     
@@ -273,6 +307,9 @@ main() {
     echo
     echo "📋 Quick Start Guide:"
     echo
+    echo "  Activate Virtual Environment:"
+    echo "    source venv/bin/activate"
+    echo
     echo "  Launch Web GUI (Recommended):"
     echo "    $PYTHON_CMD astrava.py"
     echo
@@ -280,6 +317,9 @@ main() {
     echo "    $PYTHON_CMD astrava.py -u https://example.com"
     echo "    $PYTHON_CMD astrava.py -u https://example.com --owasp-all"
     echo "    $PYTHON_CMD astrava.py -u https://example.com --owasp-all --chain-attacks"
+    echo
+    echo "  Deactivate Virtual Environment:"
+    echo "    deactivate"
     echo
     echo "  Get Help:"
     echo "    $PYTHON_CMD astrava.py --help"
@@ -292,6 +332,10 @@ main() {
     echo "  - Recommended models:"
     echo "      ollama pull xploiter/pentester  (security-focused)"
     echo "      ollama pull llama3.2:3b         (general purpose)"
+    echo
+    echo "💡 Note: Virtual environment is activated automatically"
+    echo "   To manually activate: source venv/bin/activate"
+    echo "   To deactivate: deactivate"
     echo
     echo "⚠️  IMPORTANT: Only scan systems you own or have permission to test!"
     echo

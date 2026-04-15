@@ -87,6 +87,8 @@ cd astrava
 install.bat
 ```
 
+**Note**: The installer automatically creates a Python virtual environment and installs all dependencies.
+
 </details>
 
 <details>
@@ -99,6 +101,8 @@ chmod +x install.sh
 ./install.sh
 ```
 
+**Note**: The installer automatically creates a Python virtual environment and installs all dependencies.
+
 </details>
 
 <details>
@@ -110,6 +114,8 @@ cd astrava
 chmod +x install.sh
 ./install.sh
 ```
+
+**Note**: The installer automatically creates a Python virtual environment and installs all dependencies.
 
 </details>
 

@@ -35,8 +35,32 @@ if %errorlevel% neq 0 (
 )
 echo [SUCCESS] pip found
 
+REM Create virtual environment
+echo [INFO] Creating Python virtual environment...
+if exist venv (
+    echo [INFO] Virtual environment already exists, using existing one
+) else (
+    python -m venv venv
+    if %errorlevel% neq 0 (
+        echo [ERROR] Failed to create virtual environment
+        pause
+        exit /b 1
+    )
+    echo [SUCCESS] Virtual environment created
+)
+
+REM Activate virtual environment
+echo [INFO] Activating virtual environment...
+call venv\Scripts\activate.bat
+if %errorlevel% neq 0 (
+    echo [ERROR] Failed to activate virtual environment
+    pause
+    exit /b 1
+)
+echo [SUCCESS] Virtual environment activated
+
 REM Install Python dependencies
-echo [INFO] Installing Python dependencies...
+echo [INFO] Installing Python dependencies in virtual environment...
 if exist requirements.txt (
     pip install -r requirements.txt
     if %errorlevel% neq 0 (
@@ -110,7 +134,11 @@ echo ================================================================
 echo.
 echo ✅ Python dependencies installed
 echo.
+echo.
 echo 📋 Quick Start Guide:
+echo.
+echo   Activate Virtual Environment:
+echo     venv\Scripts\activate
 echo.
 echo   Launch Web GUI (Recommended):
 echo     python astrava.py
@@ -119,6 +147,9 @@ echo   CLI Scans:
 echo     python astrava.py -u https://example.com
 echo     python astrava.py -u https://example.com --owasp-all
 echo     python astrava.py -u https://example.com --owasp-all --chain-attacks
+echo.
+echo   Deactivate Virtual Environment:
+echo     deactivate
 echo.
 echo   Get Help:
 echo     python astrava.py --help
@@ -131,6 +162,10 @@ echo   - Install Ollama from https://ollama.ai
 echo   - Recommended models:
 echo       ollama pull xploiter/pentester  (security-focused)
 echo       ollama pull llama3.2:3b         (general purpose)
+echo.
+echo 💡 Note: Virtual environment is activated automatically
+echo    To manually activate: venv\Scripts\activate
+echo    To deactivate: deactivate
 echo.
 echo ⚠️  IMPORTANT: Only scan systems you own or have permission to test!
 echo.
