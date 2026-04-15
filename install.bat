@@ -6,7 +6,7 @@ setlocal enabledelayedexpansion
 
 echo.
 echo ================================================================
-echo    🛡️  ASTRAVA AI SECURITY SCANNER - Installation (Windows)
+echo    ASTRAVA AI SECURITY SCANNER - Installation (Windows)
 echo ================================================================
 echo.
 echo [INFO] Starting installation process...
@@ -21,9 +21,29 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM Get Python version
+REM Get and validate Python version
 for /f "tokens=2" %%i in ('python --version 2^>^&1') do set PYTHON_VERSION=%%i
 echo [SUCCESS] Python %PYTHON_VERSION% found
+
+REM Validate Python version is 3.8 or higher
+for /f "tokens=1,2 delims=." %%a in ("%PYTHON_VERSION%") do (
+    set PYTHON_MAJOR=%%a
+    set PYTHON_MINOR=%%b
+)
+
+if %PYTHON_MAJOR% LSS 3 (
+    echo [ERROR] Python 3.8+ required, found %PYTHON_VERSION%
+    pause
+    exit /b 1
+)
+
+if %PYTHON_MAJOR% EQU 3 if %PYTHON_MINOR% LSS 8 (
+    echo [ERROR] Python 3.8+ required, found %PYTHON_VERSION%
+    pause
+    exit /b 1
+)
+
+echo [SUCCESS] Python version %PYTHON_VERSION% is compatible
 
 REM Check pip
 echo [INFO] Checking pip installation...
@@ -76,18 +96,30 @@ if exist requirements.txt (
 )
 
 REM Check if Ollama is installed (optional)
-echo [INFO] Checking Ollama installation (optional for AI features)...
+echo [INFO] Checking Ollama installation - optional for AI features
 ollama --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [INFO] Ollama not found - you can install it later for AI features
-    echo [INFO] To use AI-powered analysis:
-    echo   1. Visit https://ollama.ai
-    echo   2. Download and install Ollama for Windows
-    echo   3. Run: ollama pull xploiter/pentester
-    echo   4. Or use any other model you prefer
+    echo [WARNING] Ollama not found
     echo.
-    echo [INFO] Configure AI settings in the Web GUI after installation
+    echo Ollama is optional for AI-powered analysis.
     echo.
+    set /p INSTALL_OLLAMA="Install Ollama now? (y/n): "
+    
+    if /i "!INSTALL_OLLAMA!"=="y" (
+        echo [INFO] Installing Ollama...
+        echo [INFO] Please download and install Ollama from https://ollama.ai/download/windows
+        echo [INFO] After installation, restart this script to complete setup
+        echo.
+        start https://ollama.ai/download/windows
+        echo [INFO] Opening Ollama download page in your browser...
+        echo [INFO] After installing Ollama, please run this script again
+        pause
+        exit /b 0
+    ) else (
+        echo [WARNING] Skipping Ollama installation
+        echo [INFO] You can install it later from: https://ollama.ai
+        echo.
+    )
 ) else (
     echo [SUCCESS] Ollama found
     
@@ -98,25 +130,40 @@ if %errorlevel% neq 0 (
         echo [INFO] Starting Ollama service...
         start /b ollama serve
         timeout /t 3 /nobreak >nul
+        
+        REM Verify Ollama is running
+        curl -s http://localhost:11434/api/tags >nul 2>&1
+        if %errorlevel% neq 0 (
+            echo [WARNING] Ollama service may not be running
+            echo [INFO] You can start it manually with: ollama serve
+        ) else (
+            echo [SUCCESS] Ollama service started
+        )
+    ) else (
+        echo [SUCCESS] Ollama is already running
     )
     
     REM List available models
     echo [INFO] Checking available AI models...
+    echo.
     ollama list 2>nul
+    if %errorlevel% neq 0 (
+        echo [WARNING] Could not retrieve model list
+    )
     echo.
     echo [INFO] AI Model Recommendations:
-    echo   Based on your system, you can download AI models:
+    echo Based on your system, you can download AI models:
     echo.
-    echo   Recommended (Security-focused):
-    echo     ollama pull xploiter/pentester
+    echo Recommended (Security-focused^):
+    echo   ollama pull xploiter/pentester
     echo.
-    echo   Alternative models (choose based on your system):
-    echo     ollama pull llama3.2:3b         (2GB RAM, general purpose)
-    echo     ollama pull qwen2.5:3b          (2GB RAM, alternative)
-    echo     ollama pull mistral:7b          (4GB RAM, more powerful)
-    echo     ollama pull llama3.2:1b         (1GB RAM, lightweight)
+    echo Alternative models (choose based on your system^):
+    echo   ollama pull llama3.2:3b         (2GB RAM, general purpose^)
+    echo   ollama pull qwen2.5:3b          (2GB RAM, alternative^)
+    echo   ollama pull mistral:7b          (4GB RAM, more powerful^)
+    echo   ollama pull llama3.2:1b         (1GB RAM, lightweight^)
     echo.
-    echo   Configure your preferred model in Web GUI after installation
+    echo Configure your preferred model in Web GUI after installation
     echo.
 )
 
@@ -127,15 +174,27 @@ if not exist reports mkdir reports
 if not exist payloads mkdir payloads
 echo [SUCCESS] Directories created
 
+REM Run installation verification
+echo.
+echo [INFO] Running comprehensive installation verification...
+echo.
+python verify_installation.py
+if %errorlevel% neq 0 (
+    echo [WARNING] Some verification checks failed
+    echo [WARNING] Please review the output above and fix any issues
+) else (
+    echo [SUCCESS] All verification checks passed!
+)
+
 echo.
 echo ================================================================
-echo    🎉 ASTRAVA Installation Completed Successfully!
+echo    ASTRAVA Installation Completed Successfully!
 echo ================================================================
 echo.
-echo ✅ Python dependencies installed
+echo [SUCCESS] Python dependencies installed
 echo.
 echo.
-echo 📋 Quick Start Guide:
+echo Quick Start Guide:
 echo.
 echo   Activate Virtual Environment:
 echo     venv\Scripts\activate
@@ -155,7 +214,7 @@ echo   Get Help:
 echo     python astrava.py --help
 echo     python astrava.py --version
 echo.
-echo 🤖 AI Configuration:
+echo AI Configuration:
 echo   - Launch the Web GUI: python astrava.py
 echo   - Go to AI Model Settings
 echo   - Install Ollama from https://ollama.ai
@@ -163,13 +222,13 @@ echo   - Recommended models:
 echo       ollama pull xploiter/pentester  (security-focused)
 echo       ollama pull llama3.2:3b         (general purpose)
 echo.
-echo 💡 Note: Virtual environment is activated automatically
+echo Note: Virtual environment is activated automatically
 echo    To manually activate: venv\Scripts\activate
 echo    To deactivate: deactivate
 echo.
-echo ⚠️  IMPORTANT: Only scan systems you own or have permission to test!
+echo IMPORTANT: Only scan systems you own or have permission to test!
 echo.
-echo 📖 For detailed documentation, see README.md
+echo For detailed documentation, see README.md
 echo.
 
 pause
